@@ -39,8 +39,6 @@ MAKE.decl('SetsNode', {
             'service' : [
                 'common.blocks',
                 'design/common.blocks',
-                'library.blocks',
-                'design/library.blocks',
                 'test.blocks'
             ]
         };
@@ -82,8 +80,6 @@ MAKE.decl('BundleNode', {
             'libs/bem-grid/common.blocks',
             'common.blocks',
             'design/common.blocks',
-            'library.blocks',
-            'design/library.blocks',
             'test.blocks'
         ];
     },

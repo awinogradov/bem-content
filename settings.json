@@ -22,7 +22,7 @@
         "ios 6"
     ],
     "library" : {
-        "levels" : [ "common.blocks", "library.blocks" ],
+        "levels" : [ "common.blocks" ],
         "pages" : {
             "dir" : "library.pages"
         }
