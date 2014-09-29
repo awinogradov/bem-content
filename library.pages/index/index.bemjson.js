@@ -18,10 +18,10 @@
             content : [
                 {
                     block : 'source',
-                    mods : { lang : 'js', theme : 'zenburn' },
+                    mods : { lang : 'js', theme : 'github' },
                     content : [
-                        'function () {',
-                        '   return false;',
+                        'function test() {\n' +
+                        '    return \'false\';\n' +
                         '}'
                     ]
                 }

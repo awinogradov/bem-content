@@ -7,7 +7,7 @@ describe('source', function() {
     var source;
 
     beforeEach(function() {
-        source = BEMDOM.init($(BEMHTML.apply({ block : 'source', mods : { lang : 'js', theme : 'zenburn' }, })).appendTo('body'))
+        source = BEMDOM.init($(BEMHTML.apply({ block : 'source', mods : { lang : 'js', theme : 'github' }, })).appendTo('body'))
             .bem('source');
     });
 
@@ -18,9 +18,8 @@ describe('source', function() {
 
     describe('highlight', function() {
         it('should load highlight.js', function() {
-
+            
         });
-
     });
 
 });

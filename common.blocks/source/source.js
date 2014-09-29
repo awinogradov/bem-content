@@ -1,6 +1,6 @@
 modules.define(
-    'code',
-    ['i-bem__dom', 'jquery', 'dom', 'code__highlight'],
+    'source',
+    ['i-bem__dom', 'jquery', 'dom', 'source__highlight'],
     function(provide, BEMDOM, $, dom, hljs) {
 
 provide(BEMDOM.decl(this.name, {
@@ -8,7 +8,7 @@ provide(BEMDOM.decl(this.name, {
     onSetMod: {
         'js' : {
             'inited' : function () {
-                hljs.highlightBlock(this.elem('source')[0]);
+                hljs.highlightBlock(this.elem('code')[0]);
             }
         }
     }
