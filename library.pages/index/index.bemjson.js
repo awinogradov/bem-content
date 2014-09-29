@@ -24,7 +24,9 @@
                         '    return \'false\';\n' +
                         '}'
                     ]
-                }
+                },
+                { block : 'p', content : 'paragraph' },
+                { block : 'p', mods : { marker : 'nb' }, content : 'paragraph' }
             ]
         },
         {

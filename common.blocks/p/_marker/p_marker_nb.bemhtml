@@ -1,0 +1,10 @@
+block('p').mod('marker', 'nb')(
+    content()(function () {
+        return [
+            { elem: 'marker', content: 'nb' },
+            this.ctx.content
+        ];
+    }),
+
+    elem('marker').tag()('span')
+)
