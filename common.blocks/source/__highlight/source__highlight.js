@@ -1,5 +1,5 @@
 modules.define(
-    'code__highlight',
+    'source__highlight',
     [],
     function(provide) {
 

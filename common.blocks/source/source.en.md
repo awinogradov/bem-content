@@ -1,4 +1,4 @@
-__Highlight code sources__
+__Block: Source. Highlight sources.__
 
 Build your pack before use block: `cd libs/highlight && python3 tools/build.py -t %lang%`
 
@@ -6,7 +6,7 @@ Block usage:
 
 ``` js
 {
-    block : 'code',
+    block : 'source',
     mods : { lang : 'js', theme : 'zenburn' },
     content : 'function() {}'
 }

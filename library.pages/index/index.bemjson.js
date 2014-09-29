@@ -17,9 +17,13 @@
             tag : 'main',
             content : [
                 {
-                    block : 'code',
+                    block : 'source',
                     mods : { lang : 'js', theme : 'zenburn' },
-                    content : 'function() {}'
+                    content : [
+                        'function () {',
+                        '   return false;',
+                        '}'
+                    ]
                 }
             ]
         },
