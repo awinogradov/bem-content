@@ -9,7 +9,7 @@ block('list') (
                 !!i,
                 {
                     elem : 'item',
-                    content: item.text
+                    content: item
                 }
             ];
         });

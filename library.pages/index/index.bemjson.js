@@ -38,18 +38,22 @@
                 {
                     block : 'list',
                     items : [
-                        { text : 'first' },
-                        { text : 'second' }
+                        'simple',
+                        [
+                            'nested list',
+                            {
+                                block : 'list',
+                                mods : { type: 'ordered' },
+                                items : [ 'first', 'second' ]
+                            }
+                        ]
                     ]
                 },
-                { block : 'list', mods : { type: 'ordered' }, items: [ { text : 'single' } ] },
+                { block : 'list', mods : { type: 'ordered' }, items: [ 'single' ] },
                 {
                     block : 'list',
                     mods : { type: 'unordered' },
-                    items : [
-                        { text : 'first' },
-                        { text : 'second' }
-                    ]
+                    items : [ 'first', 'second' ]
                 }
             ]
         },
