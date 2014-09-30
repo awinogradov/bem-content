@@ -35,9 +35,22 @@
                 },
 
                 { block : 'paragraph', mods : { marker : 'nb' }, content : 'paragraph with NB' },
-                { block : 'list' },
+                {
+                    block : 'list',
+                    items : [
+                        { text : 'first' },
+                        { text : 'second' }
+                    ]
+                },
                 { block : 'list', mods : { type: 'ordered' } },
-                { block : 'list', mods : { type: 'unordered' } },
+                {
+                    block : 'list',
+                    mods : { type: 'unordered' },
+                    items : [
+                        { text : 'first' },
+                        { text : 'second' }
+                    ]
+                },
                 { block : 'list', mods : { type: 'description' } }
             ]
         },
