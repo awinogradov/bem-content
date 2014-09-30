@@ -1,0 +1,3 @@
+block('list').mod('type', 'description') (
+    tag()('dl')
+)

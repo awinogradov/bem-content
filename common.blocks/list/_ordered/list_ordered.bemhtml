@@ -1,3 +1,0 @@
-block('list').mod('ordered', 'true') (
-    tag()('ol')
-)
