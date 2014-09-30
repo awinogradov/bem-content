@@ -1,8 +1,8 @@
 ({
-    mustDeps: [
+    mustDeps : [
         { block : 'variables' }
     ],
-    shouldDeps: [
+    shouldDeps : [
 
     ]
 })
