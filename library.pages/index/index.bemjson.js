@@ -34,7 +34,9 @@
                     ]
                 },
 
-                { block : 'paragraph', mods : { marker : 'nb' }, content : 'paragraph with NB' }
+                { block : 'paragraph', mods : { marker : 'nb' }, content : 'paragraph with NB' },
+                { block : 'list' },
+                { block : 'list', mods : { ordered: 'true' } }
             ]
         },
         {
