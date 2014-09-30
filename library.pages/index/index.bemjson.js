@@ -50,8 +50,7 @@
                         { text : 'first' },
                         { text : 'second' }
                     ]
-                },
-                { block : 'list', mods : { type: 'description' } }
+                }
             ]
         },
         {
