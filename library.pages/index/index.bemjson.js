@@ -24,6 +24,7 @@
                 { block : 'paragraph', content : 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. ' },
                 { block : 'heading', lvl : 4, content : 'Level 4' },
                 { block : 'paragraph', content : 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. ' },
+                { block : 'paragraph', mods : { marker : 'nb' }, content : 'paragraph with NB' },
                 {
                     block : 'source',
                     mods : { lang : 'js', theme : 'github' },
@@ -33,15 +34,22 @@
                         '}'
                     ]
                 },
-
-                { block : 'paragraph', mods : { marker : 'nb' }, content : 'paragraph with NB' }
+                {
+                    block : 'blockquote',
+                    content : 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+                },
+                {
+                    block : 'blockquote',
+                    source : 'Anton Winogradov',
+                    content : 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+                }
             ]
         },
         {
             elem : 'footer',
             tag : 'footer',
             content : [
-                'License: MIT'
+                
             ]
         }
     ]
