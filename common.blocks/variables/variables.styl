@@ -9,12 +9,14 @@ remify(value) {
     }
 }
 
+font_family      = 'Helvetica', Arial, sans-serif;
 font_size_val    = 14;
 font_size        = unit(font_size_val, 'px');
 line_height      = 20 / font_size_val;
 base_font_size   = remify(font_size);
 base_line_height = remify(unit(floor(font_size_val * line_height), 'px'));
 
+h_font_family    = font_family;
 h1_lines         = 4;
 h1_line          = base_line_height;
 h1_line_height   = h1_line * h1_lines;

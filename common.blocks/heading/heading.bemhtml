@@ -1,11 +1,11 @@
-block('h')(
+block('heading')(
 
     def()(function () {
 
         var lvl = this.ctx.lvl || 1;
 
         applyCtx({
-            block : 'h',
+            block : 'heading',
             tag : 'h' + lvl,
             mods : { lvl : lvl },
             content : this.ctx.content
