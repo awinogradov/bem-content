@@ -1,6 +1,7 @@
 ({
     mustDeps : [
-        { block : 'i-bem', elems : 'dom' }
+        { block : 'i-bem', elems : 'dom' },
+        { block : 'variables' }
     ],
     shouldDeps : [
         { elems : ['highlight', 'code'] }
