@@ -6,7 +6,7 @@ block('blockquote')(
         var content = [
             {
                 block : 'paragraph',
-                mix : [{ block : 'blockquote', elem : 'content' }],
+                mix : [{ block : this.block, elem : 'content' }],
                 content : this.ctx.content
             }
         ];
