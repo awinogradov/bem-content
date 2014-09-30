@@ -42,7 +42,7 @@
                         { text : 'second' }
                     ]
                 },
-                { block : 'list', mods : { type: 'ordered' } },
+                { block : 'list', mods : { type: 'ordered' }, items: [ { text : 'single' } ] },
                 {
                     block : 'list',
                     mods : { type: 'unordered' },
