@@ -1,31 +1,44 @@
-base_font_size   = 0.875rem;
-base_line_height = 1.25rem;
+// 16px = 1rem
+remify(value) {
+    u = unit(value);
 
-h1_font_size     = 5.75rem;
-h1_line          = 1.25rem;
+    if (u is 'px') {
+        return unit(value/16, 'rem');
+    } else {
+        return unit(value, u);
+    }
+}
+
+font_size        = 14px;
+line_height      = 20px;
+base_font_size   = remify(font_size);
+base_line_height = remify(line_height);
+
 h1_lines         = 5;
+h1_line          = base_line_height;
 h1_line_height   = h1_line * h1_lines;
+h1_font_size     = h1_line * h1_lines;
 h1_margin_top    = 2 * h1_line;
 h1_margin_bottom = 1 * h1_line;
 
-h2_font_size     = 3.0625rem;
-h2_line          = 1.25rem;
 h2_lines         = 3;
+h2_line          = base_line_height;
 h2_line_height   = h2_line * h2_lines;
+h2_font_size     = h2_line * h2_lines;
 h2_margin_top    = 2 * h2_line;
 h2_margin_bottom = 1 * h2_line;
 
-h3_font_size     = 1.625rem;
-h3_line          = 1.25rem;
+h3_line          = base_line_height;
 h3_lines         = 2;
 h3_line_height   = h3_line * h3_lines;
+h3_font_size     = h3_line * h3_lines;
 h3_margin_top    = 1.5 * h3_line;
 h3_margin_bottom = 1 * h3_line;
 
-h4_font_size     = 0.875rem;
-h4_line          = 1.25rem;
-h4_lines         = 1;
+h4_lines         = 1.5;
+h4_line          = base_line_height;
 h4_line_height   = h4_line * h4_lines;
+h4_font_size     = h4_line * h4_lines;
 h4_margin_top    = 1.25 * h4_line;
 h4_margin_bottom = 1 * h4_line;
 
