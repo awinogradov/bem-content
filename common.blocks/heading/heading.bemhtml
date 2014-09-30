@@ -7,7 +7,7 @@ block('heading')(
         applyCtx({
             block : 'heading',
             tag : 'h' + lvl,
-            mods : { lvl : lvl },
+            mods : this.extend(this.ctx.mods, { lvl : lvl }),
             content : this.ctx.content
         });
 
