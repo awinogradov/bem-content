@@ -50,7 +50,7 @@
                             }
                         ]
                     ]
-                }
+                },
                 {
                     block : 'blockquote',
                     content : 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
