@@ -16,7 +16,8 @@
             elem : 'content',
             tag : 'main',
             content : [
-                { block : 'heading', lvl : 1, content : 'Level 1' },
+                { block : 'heading', lvl : 1, mods : { love : 'tender' }, content : 'Level 1' },
+                { block : 'paragraph', mods : { lead : true }, content : 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. ' },
                 { block : 'paragraph', content : 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. ' },
                 { block : 'heading', lvl : 2, content : 'Level 2' },
                 { block : 'paragraph', content : 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. ' },
