@@ -35,25 +35,20 @@
                 },
 
                 { block : 'paragraph', mods : { marker : 'nb' }, content : 'paragraph with NB' },
+                { block : 'list', items: [ 'unordered 1', 'unordered 2' ] },
+                { block : 'list', mods : { type: 'ordered' }, items: [ 'ordered 1', 'ordered 2' ] },
                 {
                     block : 'list',
                     items : [
-                        'simple',
+                        'nested list 1',
                         [
-                            'nested list',
+                            'nested list 2',
                             {
                                 block : 'list',
-                                mods : { type: 'ordered' },
-                                items : [ 'first', 'second' ]
+                                items : [ 'nested 1', 'nested 2' ]
                             }
                         ]
                     ]
-                },
-                { block : 'list', mods : { type: 'ordered' }, items: [ 'single' ] },
-                {
-                    block : 'list',
-                    mods : { type: 'unordered' },
-                    items : [ 'first', 'second' ]
                 }
             ]
         },

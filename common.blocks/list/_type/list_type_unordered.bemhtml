@@ -1,3 +1,0 @@
-block('list').mod('type', 'unordered') (
-    tag()('ul')
-)

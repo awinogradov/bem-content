@@ -7,8 +7,17 @@ __Блок: List__
 ``` js
 {
     block : 'list',
-    mods : { type: 'unordered' },
-    items : [ 'first', 'second' ]
+    items: [ 'unordered 1', 'unordered 2' ]
+}
+```
+
+Использование блока с упорядоченным списком:
+
+``` js
+{
+    block : 'list',
+    mods: { type : 'ordered' },
+    items: [ 'ordered 1', 'ordered 2' ]
 }
 ```
 
@@ -18,13 +27,12 @@ __Блок: List__
 {
     block : 'list',
     items : [
-        'simple',
+        'nested list 1',
         [
-            'nested list',
+            'nested list 2',
             {
                 block : 'list',
-                mods : { type: 'ordered' },
-                items : [ 'first', 'second' ]
+                items : [ 'nested 1', 'nested 2' ]
             }
         ]
     ]

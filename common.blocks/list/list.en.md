@@ -7,8 +7,17 @@ Block usage:
 ``` js
 {
     block : 'list',
-    mods : { type: 'unordered' },
-    items : [ 'first', 'second' ]
+    items: [ 'unordered 1', 'unordered 2' ]
+}
+```
+
+Block usage for ordered lists:
+
+``` js
+{
+    block : 'list',
+    mods: { type : 'ordered' },
+    items: [ 'ordered 1', 'ordered 2' ]
 }
 ```
 
@@ -18,13 +27,12 @@ Block usage for nested lists:
 {
     block : 'list',
     items : [
-        'simple',
+        'nested list 1',
         [
-            'nested list',
+            'nested list 2',
             {
                 block : 'list',
-                mods : { type: 'ordered' },
-                items : [ 'first', 'second' ]
+                items : [ 'nested 1', 'nested 2' ]
             }
         ]
     ]
