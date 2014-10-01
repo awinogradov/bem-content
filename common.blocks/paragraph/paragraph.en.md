@@ -24,7 +24,7 @@ The following custom fields could be specified in BEMJSON declaration of the blo
         <td>
             <code>String</code>
         </td>
-        <td>Marker for paragraph. Ex: __NB__</td>
+        <td>Marker for paragraph. Ex: <strong>NB</strong></td>
     </tr>
 </table>
 
