@@ -1,6 +1,6 @@
-__Block: List__
+# List
 
-Use for create ordered and unordered lists.
+Block `list` need for create ordered and unordered lists.
 
 Block usage:
 
@@ -11,7 +11,7 @@ Block usage:
 }
 ```
 
-Block usage for ordered lists:
+Block usage with ordered list:
 
 ``` js
 {
@@ -38,3 +38,28 @@ Block usage for nested lists:
     ]
 }
 ```
+
+## Custom fields of a block
+
+The following custom fields could be specified in BEMJSON declaration of the block:
+
+<table>
+    <tr>
+        <th>Custom field name</th>
+        <th>Type</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>items</td>
+        <td>
+            <code>Array</code>
+        </td>
+        <td>Array of list elements. Element can be string or content, including other blocks.</td>
+    </tr>
+</table>
+
+## Modifiers of a block
+
+### _type
+
+List type: ordered or unordered.
