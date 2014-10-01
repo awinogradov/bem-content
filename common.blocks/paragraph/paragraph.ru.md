@@ -24,7 +24,7 @@
         <td>
             <code>String</code>
         </td>
-        <td>Метка для абзаца. Например: __NB__</td>
+        <td>Метка для абзаца. Например: <strong>NB</strong></td>
     </tr>
 </table>
 
