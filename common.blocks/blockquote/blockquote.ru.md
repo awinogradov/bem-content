@@ -1,8 +1,8 @@
-__Блок: Blockquote__
+# Blockquote
 
-Блок для оформления цитат в тексте.
+Блок `blockquote` используется для оформления цитат в тексте.
 
-Использование блока:
+## Использование блока:
 
 ``` js
 {
@@ -15,3 +15,22 @@ __Блок: Blockquote__
     content : 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
 }
 ```
+
+## Специализированные поля блока
+
+Список зарезервированных полей входного BEMJSON:
+
+<table>
+    <tr>
+        <th>Поле</th>
+        <th>Тип</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>source</td>
+        <td>
+            <code>String</code>
+        </td>
+        <td>Источник цитаты</td>
+    </tr>
+</table>
