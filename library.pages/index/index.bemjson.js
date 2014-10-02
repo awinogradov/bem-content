@@ -34,17 +34,17 @@
                         '}'
                     ]
                 },
-                { block : 'list', items: [ 'unordered 1', 'unordered 2' ] },
-                { block : 'list', mods : { type: 'ordered' }, items: [ 'ordered 1', 'ordered 2' ] },
+                { block : 'list', items: [ 'item 1', 'item 2' ] },
+                { block : 'list', mods : { type: 'ordered' }, items: [ 'ordered item 1', 'ordered item 2' ] },
                 {
                     block : 'list',
                     items : [
-                        'nested list 1',
+                        'item 1',
                         [
-                            'nested list 2',
+                            'item 2',
                             {
                                 block : 'list',
-                                items : [ 'nested 1', 'nested 2' ]
+                                items : [ 'nested item 1', 'nested item 2' ]
                             }
                         ]
                     ]

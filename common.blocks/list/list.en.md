@@ -2,37 +2,27 @@
 
 Block `list` need for create ordered and unordered lists.
 
-Block usage:
+## Block usage:
 
 ``` js
 {
     block : 'list',
-    items: [ 'unordered 1', 'unordered 2' ]
+    items: [ 'item 1', 'item 2' ]
 }
 ```
 
-Block usage with ordered list:
-
-``` js
-{
-    block : 'list',
-    mods: { type : 'ordered' },
-    items: [ 'ordered 1', 'ordered 2' ]
-}
-```
-
-Block usage for nested lists:
+## Nested lists:
 
 ``` js
 {
     block : 'list',
     items : [
-        'nested list 1',
+        'item 1',
         [
-            'nested list 2',
+            'item 2',
             {
                 block : 'list',
-                items : [ 'nested 1', 'nested 2' ]
+                items : [ 'nested item 1', 'nested item 2' ]
             }
         ]
     ]
@@ -54,7 +44,7 @@ The following custom fields could be specified in BEMJSON declaration of the blo
         <td>
             <code>Array</code>
         </td>
-        <td>Array of list elements. Element can be string or content, including other blocks.</td>
+        <td>Array of list items. Item can be string, object or array.</td>
     </tr>
 </table>
 
@@ -62,4 +52,12 @@ The following custom fields could be specified in BEMJSON declaration of the blo
 
 ### _type
 
-List type: ordered or unordered.
+- ordered list (list_type_ordered)
+
+``` js
+{
+    block : 'list',
+    mods: { type : 'ordered' },
+    items: [ 'ordered item 1', 'ordered item 2' ]
+}
+```
