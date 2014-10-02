@@ -2,7 +2,7 @@ block('figure')(
 
     tag()('figure'),
 
-    content()(function () {
+    content()(function() {
         var content = [this.ctx.content];
 
         this.ctx.caption && content.push({
@@ -14,4 +14,4 @@ block('figure')(
     }),
 
     elem('caption').tag()('figcaption')
-)
+);

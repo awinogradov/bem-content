@@ -1,6 +1,6 @@
 block('heading')(
 
-    def()(function () {
+    def()(function() {
 
         var lvl = this.ctx.lvl || 1;
 
@@ -12,4 +12,4 @@ block('heading')(
         });
 
     })
-)
+);

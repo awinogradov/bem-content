@@ -1,6 +1,4 @@
-var PATH = require('path'),
-    BEM = require('bem'),
-    Q = BEM.require('q');
+var BEM = require('bem');
 
 exports.baseTechName = '../../libs/bem-pr/bem/techs/spec.js';
 

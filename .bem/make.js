@@ -1,7 +1,7 @@
+/* global MAKE:false */
+
 var settings = require('../settings.json'),
-    environ  = require('bem-environ')(__dirname),
-    path     = require('path'),
-    U        = require('bem').util;
+    environ  = require('bem-environ')(__dirname);
 
 require('bem-tools-autoprefixer').extendMake(MAKE);
 
@@ -50,7 +50,6 @@ MAKE.decl('SetsNode', {
 
 });
 
-
 MAKE.decl('BundleNode', {
 
     getTechs : function() {
@@ -95,7 +94,7 @@ MAKE.decl('BundleNode', {
 
 MAKE.decl('AutoprefixerNode', {
 
-    getBrowsers : function () {
+    getBrowsers : function() {
         return settings.browsers_support;
     }
 

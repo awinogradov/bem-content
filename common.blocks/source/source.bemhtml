@@ -4,14 +4,14 @@ block('source')(
 
     js()(true),
 
-    content()(function () {
+    content()(function() {
         return [
             {
-                elem: 'code',
-                tag: 'code',
-                cls: this.ctx.mods.lang,
-                content: this.ctx.content
+                elem : 'code',
+                tag : 'code',
+                cls : this.ctx.mods.lang,
+                content : this.ctx.content
             }
         ];
     })
-)
+);

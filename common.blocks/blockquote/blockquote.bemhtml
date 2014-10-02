@@ -2,7 +2,7 @@ block('blockquote')(
 
     tag()('blockquote'),
 
-    content()(function () {
+    content()(function() {
         var content = [
             {
                 block : 'paragraph',
@@ -20,4 +20,4 @@ block('blockquote')(
         return content;
     })
 
-)
+);
