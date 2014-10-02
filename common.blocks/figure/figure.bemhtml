@@ -1,0 +1,17 @@
+block('figure')(
+
+    tag()('figure'),
+
+    content()(function () {
+        var content = [this.ctx.content];
+
+        this.ctx.caption && content.push({
+            elem : 'caption',
+            content : this.ctx.caption
+        });
+
+        return content;
+    }),
+
+    elem('caption').tag()('figcaption')
+)
