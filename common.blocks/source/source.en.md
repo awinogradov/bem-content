@@ -1,8 +1,7 @@
 # Source
 
 Use block `source` for highlighting your code. Block with magic will be wrapped
-to block `figure` for pretty HTML5 semantic. Build your pack before use
-block: `cd libs/highlight && python3 tools/build.py :common`
+to block `figure` for pretty HTML5 semantic. 
 
 ## Block usage:
 

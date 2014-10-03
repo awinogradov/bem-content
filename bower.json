@@ -1,7 +1,7 @@
 {
     "name": "bem-content",
     "version": "0.0.1",
-    "description": "Library for right work with typography in BEM methodology",
+    "description": "Library for right work with content in BEM methodology",
     "repository": {
         "type": "git",
         "url": "git://github.com/verybigman/bem-content.git"
