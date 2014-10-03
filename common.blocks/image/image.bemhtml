@@ -1,0 +1,15 @@
+block('image')(
+
+    tag()('img'),
+
+    def()(function() {
+        var _ctx = this.ctx;
+
+        applyCtx({
+            block : 'figure',
+            caption : _ctx.caption,
+            content : _ctx
+        });
+    })
+
+);
