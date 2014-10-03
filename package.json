@@ -1,19 +1,5 @@
 {
   "private": true,
-  "name": "bem-typo",
-  "version": "0.0.1",
-  "description": "Library for work with typography in BEM methodology",
-  "homepage": "https://github.com//bem-typo",
-  "bugs": "https://github.com//bem-typo/issues",
-  "author": {
-    "name": "Anton Winogradov",
-    "email": "winogradovaa@gmail.com",
-    "url": "https://github.com/verybigman"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com//bem-typo.git"
-  },
   "dependencies": {
     "bem-environ": "1.4.0"
   },

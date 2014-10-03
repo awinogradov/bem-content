@@ -1,15 +1,16 @@
 {
-    "name": "bem-typo",
+    "name": "bem-content",
     "version": "0.0.1",
-    "description": "Library for work with typography in BEM methodology",
+    "description": "Library for right work with typography in BEM methodology",
     "repository": {
         "type": "git",
-        "url": "git://github.com/verybigman/bem-typo.git"
+        "url": "git://github.com/verybigman/bem-content.git"
     },
     "keywords": [
         "bem",
         "stylus",
-        "typography"
+        "typography",
+        "content"
     ],
     "authors": [
         "Anton Winogradov <winogradovaa@gmail.com>"
