@@ -1,7 +1,8 @@
 # Source
 
-Блок `source` используется для подсветки исходного кода в тексте.
-Сборка пакета для highlight.js: `cd libs/highlight && python3 tools/build.py :common`
+Блок `source` используется для подсветки исходного кода в тексте. Блок умеет автоматически оборачиваться в
+блок `figure` для поддержания семантичности HTML5. Сборка пакета
+для highlight.js: `cd libs/highlight && python3 tools/build.py :common`
 
 ## Использование блока:
 
@@ -16,7 +17,26 @@
 Если хочется использовать другую тему надо создать модификатор 'theme' с новым значением, равным имени темы из highlight.js в технологии Stylus.
 Внутри этого файла импортировать тему `@import '../../../../libs/highlight/src/styles/%name%.css'`.
 
-## Modifiers of a block
+## Специализированные поля блока
+
+Список зарезервированных полей входного BEMJSON:
+
+<table>
+    <tr>
+        <th>Поле</th>
+        <th>Тип</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>caption</td>
+        <td>
+            <code>String</code>
+        </td>
+        <td>Подпись для исходника. Пересылается в моду caption блока `figure`.</td>
+    </tr>
+</table>
+
+## Модификаторы блока
 
 ### _lang
 

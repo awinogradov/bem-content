@@ -82,6 +82,16 @@
                     ]
                 },
                 {
+                    block : 'source',
+                    caption : 'Исходник с подписью',
+                    mods : { lang : 'js', theme : 'github' },
+                    content : [
+                        'function test() {\n' +
+                        '    return \'false\';\n' +
+                        '}'
+                    ]
+                },
+                {
                     block : 'image',
                     url : 'https://raw.githubusercontent.com/bem/bem-identity/master/sign/sign.png'
                 },

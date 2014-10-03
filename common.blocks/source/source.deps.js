@@ -4,6 +4,7 @@
         { block : 'variables' }
     ],
     shouldDeps : [
+        { block : 'figure' },
         { elems : ['highlight', 'code'] }
     ]
 }
