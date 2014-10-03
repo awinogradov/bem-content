@@ -104,7 +104,8 @@
                     block : 'image',
                     url : 'https://raw.githubusercontent.com/bem/bem-identity/master/sign/sign.png',
                     caption : 'Логотип БЭМ',
-                    attrs : { width : '60px', height: '50px' }
+                    width : '60px',
+                    height: '50px'
                 },
                 { block : 'list', items: [ 'item 1', 'item 2' ] },
                 { block : 'list', mods : { type: 'ordered' }, items: [ 'ordered item 1', 'ordered item 2' ] },

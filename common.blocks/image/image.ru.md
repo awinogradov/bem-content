@@ -1,7 +1,8 @@
 # Image
 
-Блок для описания илюстраций где угодно. Блок умеет автоматически оборачиваться в
-блок `figure` для поддержания семантичности HTML5.
+Блок расширяет блок `image` из [bem-components](http://ru.bem.info/libs/bem-components/v2/).
+Блок умеет автоматически оборачиваться в блок `figure` для поддержания семантичности HTML5.
+Читайте [оригинальную документацию](http://ru.bem.info/libs/bem-components/v2/desktop/image/) к блоку.
 
 ## Использование блока
 
@@ -19,7 +20,9 @@
     block : 'image',
     url : 'https://raw.githubusercontent.com/bem/bem-identity/master/sign/sign.png',
     caption : 'BEM logo from GitHub',
-    attrs : { width : '60px', height: '50px' }
+    width : '60px',
+    height : '50px',
+    alt : 'BEM'
 }
 ```
 
@@ -38,7 +41,7 @@
         <td>
             <code>String</code>
         </td>
-        <td>Описание изображения. Пересылается в моду caption блока `figure`.</td>
+        <td>Описание изображения. Пересылается в моду caption блока <code>figure</code> и моду title блока <code>image</code>.</td>
     </tr>
     <tr>
         <td>url</td>

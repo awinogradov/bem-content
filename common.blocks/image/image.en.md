@@ -1,7 +1,8 @@
 # Image
 
-Block for make illustrations in text and everywhere. Block with magic will be wrapped
-to block `figure` for pretty HTML5 semantic.
+This block extend `image` block from [bem-components](http://bem.info/libs/bem-components/v2).
+Block with magic will be wrapped to block `figure` for pretty HTML5 semantic.
+Read [original docs](http://bem.info/libs/bem-components/v2/desktop/image) for `image` block.
 
 ## Block usage
 
@@ -19,7 +20,9 @@ to block `figure` for pretty HTML5 semantic.
     block : 'image',
     url : 'https://raw.githubusercontent.com/bem/bem-identity/master/sign/sign.png',
     caption : 'BEM logo from GitHub',
-    attrs : { width : '60px', height: '50px' }
+    width : '60px',
+    height : '50px',
+    alt : 'BEM'
 }
 ```
 
@@ -38,7 +41,7 @@ The following custom fields could be specified in BEMJSON declaration of the blo
         <td>
             <code>String</code>
         </td>
-        <td>Caption for image. Will be translated to `figure` caption.</td>
+        <td>Caption for image. Will be translated to <code>figure</code> caption and image title .</td>
     </tr>
     <tr>
         <td>url</td>
