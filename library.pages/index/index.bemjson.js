@@ -1,6 +1,6 @@
 ({
     block : 'page',
-    title : 'Yeoman BEM',
+    title : 'BEM Content library',
     favicon : 'favicon.ico',
     head : [{ elem : 'meta', attrs : { name : 'viewport', content : 'width=device-width, initial-scale=1.0' }}],
     styles : [{ elem : 'css', url : 'assets/application.min.css' }],
