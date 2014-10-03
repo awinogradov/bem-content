@@ -11,6 +11,12 @@
     block : 'source',
     mods : { lang : 'js', theme : 'github' },
     content : 'function test() {\n return true;\n }\n'
+},
+{
+    block : 'source',
+    caption : 'Source with caption',
+    mods : { lang : 'js', theme : 'github' },
+    content : 'function test() {\n return true;\n }\n'
 }
 ```
 
