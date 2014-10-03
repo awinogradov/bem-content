@@ -3,7 +3,12 @@ block('figure')(
     tag()('figure'),
 
     content()(function() {
-        var content = [this.ctx.content];
+        var content = [
+            {
+                elem : 'content',
+                content : this.ctx.content
+            }
+        ];
 
         this.ctx.caption && content.push({
             elem : 'caption',
