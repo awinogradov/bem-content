@@ -16,7 +16,10 @@
             elem : 'content',
             tag : 'main',
             content : [
-                { block : 'heading', lvl : 1, content : 'Level 1' },
+                { block : 'heading', lvl : 1, content : 'h1. Level 1' },
+                { block : 'heading', lvl : 2, content : 'h2. Level 2' },
+                { block : 'heading', lvl : 3, content : 'h3. Level 3' },
+                { block : 'heading', lvl : 4, content : 'h4. Level 4' },
                 {
                     block : 'paragraph',
                     mods : { lead : true },
@@ -38,29 +41,6 @@
                         'Nulla consequat massa quis enim.'
                     ]
                 },
-                { block : 'heading', lvl : 2, content : 'Level 2' },
-                {
-                    block : 'paragraph',
-                    content : [
-                        'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. ',
-                        'Aenean commodo ligula eget dolor. Aenean massa. ',
-                        'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. ',
-                        'Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. ',
-                        'Nulla consequat massa quis enim.'
-                    ]
-                },
-                { block : 'heading', lvl : 3, content : 'Level 3' },
-                {
-                    block : 'paragraph',
-                    content : [
-                        'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. ',
-                        'Aenean commodo ligula eget dolor. Aenean massa. ',
-                        'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. ',
-                        'Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. ',
-                        'Nulla consequat massa quis enim.'
-                    ]
-                },
-                { block : 'heading', lvl : 4, content : 'Level 4' },
                 {
                     block : 'paragraph',
                     mark : 'nb',
