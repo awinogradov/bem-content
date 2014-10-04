@@ -1,7 +1,7 @@
 ({
     mustDeps : [
         { block : 'i-bem', elems : 'dom' },
-        { block : 'variables' }
+        { block : 'calc' }
     ],
     shouldDeps : [
         { block : 'figure' },

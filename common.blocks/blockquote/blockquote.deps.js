@@ -1,7 +1,8 @@
 ({
     mustDeps : [
-        { block : 'variables' },
-        { block : 'paragraph' }
+        { block : 'calc' },
+        { block : 'paragraph' },
+        { elems : ['content', 'footer'] }
     ],
     shouldDeps : [
 

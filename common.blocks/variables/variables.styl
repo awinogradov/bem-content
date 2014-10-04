@@ -1,56 +1,32 @@
-// 16px = 1rem
-remify(value) {
-    u = unit(value);
+// BASE FONTS ==================================================================
 
-    if (u is 'px') {
-        return unit(value/16, 'rem');
-    } else {
-        return unit(value, u);
-    }
-}
+font_family   = Helvetica, Arial, sans-serif;
+font_size     = 14px;
 
-font_family      = Helvetica, Arial, sans-serif;
-font_size_val    = 16;
-font_size        = unit(font_size_val, 'px');
-line_height      = 20 / font_size_val;
-base_font_size   = remify(font_size);
-base_line_height = remify(unit(floor(font_size_val * line_height), 'px'));
+// BLOCKS FONTS ================================================================
 
-h_font_family    = font_family;
-h_font_weight    = 500;
+/*
+* HEADING:
+* h*_lines * rem_font_size§
+* rem_font_size = remify(font_size)
+* headings sizes step is 0.375rem = 6px
+*/
 
-// headings step 0.375 = 6px
+h_font_family = font_family;
+h_font_weight = 500;
 
-h1_lines         = 3;
-h1_line_height   = base_line_height * h1_lines;
-h1_font_size     = base_font_size * h1_lines;
-h1_margin_top    = 2 * base_font_size;
-h1_margin_bottom = 1 * base_font_size;
+h1_lines      = 3;
+h2_lines      = 2.625;
+h3_lines      = 2.25;
+h4_lines      = 1.875;
 
-h2_lines         = 2.625;
-h2_line_height   = base_line_height * h2_lines;
-h2_font_size     = base_font_size * h2_lines;
-h2_margin_top    = 2 * base_font_size;
-h2_margin_bottom = 1 * base_font_size;
+/*
+* PARAGRAPH:
+* lead mod will be scaled from rem_font_size (block `calc`)
+*/
+p_lead_scale  = 1.25;
 
-h3_lines         = 2.25;
-h3_line_height   = base_line_height * h3_lines;
-h3_font_size     = base_font_size * h3_lines;
-h3_margin_top    = 2 * base_font_size;
-h3_margin_bottom = 1 * base_font_size;
-
-h4_lines         = 1.875;
-h4_line_height   = base_line_height * h4_lines;
-h4_font_size     = base_font_size * h4_lines;
-h4_margin_top    = 2 * base_font_size;
-h4_margin_bottom = 1 * base_font_size;
-
-p_lead_font_size = base_font_size * 1.25;
-p_margin_top     = base_line_height;
-p_margin_bottom  = base_line_height;
-
-source_padding  = 0;
-
-q_padding       = 10px 20px;
-q_margin        = 0 0 20px;
-q_font_size     = base_font_size * 1.25;
+/*
+* BLOCKQUOTE:
+*/
+q_scale       = 1.25;
