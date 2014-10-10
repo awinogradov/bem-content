@@ -1,6 +1,8 @@
 block('heading')(
 
-    def()(function() {
+    def().match(function() { return !this._defHeadingApplied; })(function() {
+
+        this._defHeadingApplied = true;
 
         var lvl = this.ctx.lvl || 1;
 
@@ -10,6 +12,8 @@ block('heading')(
             mods : this.extend(this.ctx.mods, { lvl : lvl }),
             content : this.ctx.content
         });
+
+        this._defHeadingApplied = false;
 
     })
 );
