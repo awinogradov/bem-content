@@ -3,6 +3,6 @@
         { block : 'calc' }
     ],
     shouldDeps : [
-
+        { block : 'print' }
     ]
 })
