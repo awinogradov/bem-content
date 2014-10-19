@@ -1,7 +1,6 @@
 /* global MAKE:false */
 
-var settings = require('../settings.json'),
-    environ  = require('bem-environ')(__dirname);
+var environ  = require('bem-environ')(__dirname);
 
 require('bem-tools-autoprefixer').extendMake(MAKE);
 
@@ -10,7 +9,7 @@ try {
 } catch(e) {
     if(e.code !== 'MODULE_NOT_FOUND')
         throw e;
-    require('bem/lib/logger').warn('"bem-pr" is not installed');
+    require('bem/lib/logger').warn('\'bem-pr\' is not installed');
 }
 
 MAKE.decl('Arch', {
@@ -94,7 +93,14 @@ MAKE.decl('BundleNode', {
 MAKE.decl('AutoprefixerNode', {
 
     getBrowsers : function() {
-        return settings.browsers_support;
+        return [
+            'last 2 versions',
+            'ie 10',
+            'ff 24',
+            'opera 12.16',
+            'android 4',
+            'ios 6'
+        ];
     }
 
 });
@@ -122,17 +128,6 @@ MAKE.decl('SpecNode', {
     getLevels : function() {
         return this.__base.apply(this, arguments)
             .concat(environ.getLibPath('bem-pr', 'spec.blocks'));
-    }
-
-});
-
-MAKE.decl('BundlesLevelNode', {
-
-    buildMergedBundle : function() {
-        return true;
-    },
-    mergedBundleName : function() {
-        return settings.assets.name;
     }
 
 });
