@@ -1,9 +1,9 @@
 # Source
 
 Use block `source` for highlighting your code. Block with magic will be wrapped
-to block `figure` for pretty HTML5 semantic. 
+to block `figure` for pretty HTML5 semantic.
 
-## Block usage:
+## Block usage
 
 ``` js
 {

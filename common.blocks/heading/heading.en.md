@@ -2,7 +2,7 @@
 
 Block `heading` need for create h1, h2, h3, h4 tags.
 
-## Block usage:
+## Block usage
 
 ``` js
 { block : 'heading', lvl : 1, content : 'Level 1' },

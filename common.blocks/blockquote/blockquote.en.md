@@ -2,7 +2,7 @@
 
 No comments.
 
-## Block usage:
+## Block usage
 
 ``` js
 {

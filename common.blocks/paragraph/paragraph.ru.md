@@ -2,7 +2,7 @@
 
 Описание абзацев в тексте
 
-Использование блока:
+## Использование блока
 
 ``` js
 { block : 'paragraph', content : 'Default paragraph' },
