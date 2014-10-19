@@ -2,7 +2,7 @@
 
 Block `list` need for create ordered and unordered lists.
 
-## Block usage:
+## Block usage
 
 ``` js
 {
@@ -11,7 +11,7 @@ Block `list` need for create ordered and unordered lists.
 }
 ```
 
-## Nested lists:
+## Nested lists
 
 ``` js
 {

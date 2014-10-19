@@ -2,7 +2,7 @@
 
 Create text paragraphs
 
-Block usage:
+## Block usage
 
 ``` js
 { block : 'paragraph', content : 'Default paragraph' },
