@@ -1,7 +1,7 @@
 ({
     block : 'page',
     title : 'BEM Content library',
-    favicon : 'favicon.ico',
+    favicon : 'www/favicon.ico',
     head : [{ elem : 'meta', attrs : { name : 'viewport', content : 'width=device-width, initial-scale=1.0' }}],
     styles : [{ elem : 'css', url : '_index.css' }],
     scripts : [{ elem : 'js', url : '_index.js' }],
@@ -78,11 +78,13 @@
                 {
                     block : 'image',
                     url : 'https://raw.githubusercontent.com/bem/bem-identity/master/sign/sign.png',
+                    mods : { wrap : true },
                     caption : 'Логотип БЭМ'
                 },
                 {
                     block : 'image',
                     url : 'https://raw.githubusercontent.com/bem/bem-identity/master/sign/sign.png',
+                    mods : { wrap : true },
                     caption : 'Логотип БЭМ',
                     width : '60px',
                     height: '50px'
