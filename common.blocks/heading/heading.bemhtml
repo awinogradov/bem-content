@@ -10,6 +10,7 @@ block('heading')(
             block : this.block,
             tag : 'h' + lvl,
             mods : this.extend(this.ctx.mods, { lvl : lvl }),
+            mix : this.ctx.mix,
             content : this.ctx.content
         });
 
