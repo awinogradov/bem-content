@@ -1,8 +1,6 @@
 # Image
 
 This block extend `image` block from [bem-components](http://bem.info/libs/bem-components/v2).
-Block with magic will be wrapped to block `figure` for pretty HTML5 semantic.
-Read [original docs](http://bem.info/libs/bem-components/v2/desktop/image) for `image` block.
 
 ## Block usage
 
@@ -14,11 +12,13 @@ Read [original docs](http://bem.info/libs/bem-components/v2/desktop/image) for `
 {
     block : 'image',
     url : 'https://raw.githubusercontent.com/bem/bem-identity/master/sign/sign.png',
+    mods : { wrap : true },
     caption : 'BEM logo from GitHub'
 },
 {
     block : 'image',
     url : 'https://raw.githubusercontent.com/bem/bem-identity/master/sign/sign.png',
+    mods : { wrap : true },
     caption : 'BEM logo from GitHub',
     width : '60px',
     height : '50px',
@@ -51,3 +51,10 @@ The following custom fields could be specified in BEMJSON declaration of the blo
         <td>Image source url.</td>
     </tr>
 </table>
+
+## Modifiers of a block
+
+### _wrap
+
+Block with magic will be wrapped to block `figure` for pretty HTML5 semantic.
+Read [original docs](http://bem.info/libs/bem-components/v2/desktop/image) for `image` block.
