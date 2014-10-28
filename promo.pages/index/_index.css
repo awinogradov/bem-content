@@ -90,6 +90,18 @@
   padding: 2.5rem 0 1.25rem;
 }
 /* ../../design/promo.blocks/page/__footer/page__footer.styl end */
+/* ../../libs/bem-components/common.blocks/image/image.styl begin */
+.image {
+  border: 0;
+}
+/* ../../libs/bem-components/common.blocks/image/image.styl end */
+/* ../../design/promo.blocks/gh-ribbon/gh-ribbon.styl begin */
+.gh-ribbon {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+/* ../../design/promo.blocks/gh-ribbon/gh-ribbon.styl end */
 /* ../../design/promo.blocks/heading/heading.styl begin */
 .heading {
   font-family: Helvetica, Arial, sans-serif;
@@ -308,11 +320,6 @@ pre .tex .formula {
 }
 /* ../../../libs/highlight/src/styles/github.css end */
 /* ../../common.blocks/source/_theme/source_theme_github.styl end */
-/* ../../libs/bem-components/common.blocks/image/image.styl begin */
-.image {
-  border: 0;
-}
-/* ../../libs/bem-components/common.blocks/image/image.styl end */
 /* ../../design/promo.blocks/blockquote/__content/blockquote__content.styl begin */
 .blockquote__content {
   font-size: 1.25rem;
