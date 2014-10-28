@@ -11,7 +11,7 @@
             content : [
                 {
                     block : 'gh-ribbon',
-                    url : 'https://github.com/verybigman/bem-content'
+                    url : '//github.com/verybigman/bem-content'
                 },
                 { block : 'heading', content : 'BEM Content' },
                 {
