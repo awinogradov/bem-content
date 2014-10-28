@@ -1,0 +1,107 @@
+<!DOCTYPE html><html class="ua_js_no"><head><meta charset="utf-8"/><title>BEM Content</title><script>(function(e,c){e[c]=e[c].replace(/(ua_js_)no/g,"$1yes");})(document.documentElement,"className");</script><meta name="viewport" content="width=device-width, initial-scale=1.0"/><link rel="stylesheet" href="_index.css"/><link rel="shortcut icon" href="www/favicon.ico"/></head><body class="page"><header class="page__header"><h1 class="heading heading_lvl_1">BEM Content</h1><p class="paragraph paragraph_lead">Library for simple work with static content.</p></header><main class="page__content" role="main"><section class="section"><h2 class="heading heading_lvl_2 section__title">Headings</h2><div class="section__content"><div class="example"><div class="example__build"><h1 class="heading heading_lvl_1">h1. Level 1</h1><h2 class="heading heading_lvl_2">h2. Level 2</h2><h3 class="heading heading_lvl_3">h3. Level 3</h3><h4 class="heading heading_lvl_4">h4. Level 4</h4></div><div class="example__source"><figure class="figure"><div class="figure__content"><pre class="source source_lang_js source_theme_github i-bem" data-bem="{&quot;source&quot;:{}}"><code class="source__code js">{ block : 'heading', content : 'h1. Level 1' },
+{ block : 'heading', lvl : 2, content : 'h2. Level 2' },
+{ block : 'heading', lvl : 3, content : 'h3. Level 3' },
+{ block : 'heading', lvl : 4, content : 'h4. Level 4' }</code></pre></div></figure></div></div><p class="paragraph">Headings sizes writed in rem and uses auto calculating for pretty view.You can customize sizes and math model in variables block.</p></div></section><section class="section"><h2 class="heading heading_lvl_2 section__title">Paragraphs</h2><div class="section__content"><div class="example"><div class="example__build"><p class="paragraph paragraph_lead">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p><p class="paragraph">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p><p class="paragraph paragraph_mark"><span class="paragraph__marker">nb</span>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p></div><div class="example__source"><figure class="figure"><div class="figure__content"><pre class="source source_lang_js source_theme_github i-bem" data-bem="{&quot;source&quot;:{}}"><code class="source__code js">{
+   block : 'paragraph',
+   mods : { lead : true },
+   content : [
+       'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. ',
+       'Aenean commodo ligula eget dolor. Aenean massa. ',
+       'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. ',
+       'Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. ',
+       'Nulla consequat massa quis enim.'
+   ]
+},
+{
+   block : 'paragraph',
+   content : [
+       'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. ',
+       'Aenean commodo ligula eget dolor. Aenean massa. ',
+       'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. ',
+       'Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. ',
+       'Nulla consequat massa quis enim.'
+   ]
+},
+{
+   block : 'paragraph',
+   mark : 'nb',
+   content : [
+       'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. ',
+       'Aenean commodo ligula eget dolor. Aenean massa. ',
+       'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. ',
+       'Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. ',
+       'Nulla consequat massa quis enim.'
+   ]
+}
+</code></pre></div></figure></div></div><p class="paragraph">Paragraphs sizes also customizable</p></div></section><section class="section"><h2 class="heading heading_lvl_2 section__title">Lists</h2><div class="section__content"><div class="example"><div class="example__build"><ul class="list"><li class="list__item">item 1</li><li class="list__item">item 2</li></ul><ol class="list list_type_ordered"><li class="list__item">ordered item 1</li><li class="list__item">ordered item 2</li></ol><ul class="list"><li class="list__item">item 1</li><li class="list__item">item 2<ul class="list"><li class="list__item">nested item 1</li><li class="list__item">nested item 2</li></ul></li></ul></div><div class="example__source"><figure class="figure"><div class="figure__content"><pre class="source source_lang_js source_theme_github i-bem" data-bem="{&quot;source&quot;:{}}"><code class="source__code js">{
+   block : 'list',
+   items: [
+       'item 1',
+       'item 2'
+   ]
+},
+{
+   block : 'list',
+   mods : { type: 'ordered' },
+   items: [
+       'ordered item 1',       'ordered item 2'   ]
+},
+{
+   block : 'list',
+   items: [
+       'item 1',
+       [
+           'item 2'
+           {
+               block : 'list',
+               items: [
+                   'nested item 1',
+                   'nested item 2'
+               ]
+           }
+       ]
+   ]
+}
+</code></pre></div></figure></div></div><p class="paragraph">BEM Content library add wrapper for image for caption writing and HTML5 semantic</p></div></section><section class="section"><h2 class="heading heading_lvl_2 section__title">Images</h2><div class="section__content"><div class="example"><div class="example__build"><img class="image" src="https://raw.githubusercontent.com/bem/bem-identity/master/sign/sign.png"/><figure class="figure"><div class="figure__content"><img class="image image_wrap" src="https://raw.githubusercontent.com/bem/bem-identity/master/sign/sign.png" width="60px" height="50px" title="This is BEM logo caption"/></div><figcaption class="figure__caption">This is BEM logo caption</figcaption></figure></div><div class="example__source"><figure class="figure"><div class="figure__content"><pre class="source source_lang_js source_theme_github i-bem" data-bem="{&quot;source&quot;:{}}"><code class="source__code js">{
+   block : 'image',
+   url : 'https://raw.githubusercontent.com/bem/bem-identity/master/sign/sign.png'},
+{
+   block : 'image',
+   url : 'https://raw.githubusercontent.com/bem/bem-identity/master/sign/sign.png'   mods : { wrap : true },
+   caption : 'This is BEM logo caption',
+   width : '60px',
+   height: '50px'
+}
+</code></pre></div></figure></div></div><p class="paragraph">BEM Content library add wrapper for image for caption writing and pretty HTML5 semantic.</p></div></section><section class="section"><h2 class="heading heading_lvl_2 section__title">Sources</h2><div class="section__content"><div class="example"><div class="example__build"><figure class="figure"><div class="figure__content"><pre class="source source_lang_js source_theme_github i-bem" data-bem="{&quot;source&quot;:{}}"><code class="source__code js">function test() {
+    return 'false';
+}</code></pre></div></figure><figure class="figure"><div class="figure__content"><pre class="source source_lang_js source_theme_github i-bem" data-bem="{&quot;source&quot;:{}}"><code class="source__code js">function test() {
+    return 'false';
+}</code></pre></div><figcaption class="figure__caption">Source with caption</figcaption></figure></div><div class="example__source"><figure class="figure"><div class="figure__content"><pre class="source source_lang_js source_theme_github i-bem" data-bem="{&quot;source&quot;:{}}"><code class="source__code js">{
+   block : 'source',
+   mods : { lang : 'js', theme : 'github' },
+   content : [
+       'function test() {\n',
+       '    return \'false\';\n',
+       '}'
+   ]
+},
+{
+   block : 'source',
+   caption : 'Source with caption',
+   mods : { lang : 'js', theme : 'github' },
+   content : [
+       'function test() {\n',
+       '    return \'false\';\n',
+       '}'
+   ]
+}
+</code></pre></div></figure></div></div></div></section><section class="section"><h2 class="heading heading_lvl_2 section__title">Blockquotes</h2><div class="section__content"><div class="example"><div class="example__build"><blockquote class="blockquote"><p class="paragraph blockquote__content">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p></blockquote><blockquote class="blockquote"><p class="paragraph blockquote__content">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p><footer class="blockquote__footer">Anton Winogradov</footer></blockquote></div><div class="example__source"><figure class="figure"><div class="figure__content"><pre class="source source_lang_js source_theme_github i-bem" data-bem="{&quot;source&quot;:{}}"><code class="source__code js">{
+   block : 'blockquote',
+   content : 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+},
+{
+   block : 'blockquote',
+   source : 'Anton Winogradov',
+   content : 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+}
+</code></pre></div></figure></div></div></div></section></main><footer class="page__footer"><p class="paragraph"><a class="link link__control i-bem" data-bem="{&quot;link&quot;:{}}" href="http://bem.info"><img class="image" src="https://rawgit.com/bem/bem-identity/master/sign/sign.png" width="50px"/></a></p></footer><script src="_index.js"></script></body></html>

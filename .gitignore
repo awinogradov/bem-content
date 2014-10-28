@@ -8,6 +8,10 @@ test/libs
 .bem/cache/
 *.pages/*/*.*
 !*.pages/*/*.bemjson.js
+!*.pages/*/*.html
+!*.pages/*/_*.js
+!*.pages/*/_*.css
+*.pages/*/_*.bemhtml.js
 !*.pages/.bem/*
 .libs-*/
 

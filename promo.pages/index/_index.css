@@ -1,0 +1,331 @@
+/* ../../common.blocks/variables/variables.styl begin */
+/*
+* HEADING:
+* h*_lines * rem_font_size
+* rem_font_size = remify(font_size)
+* headings sizes step is 0.375rem = 6px
+*/
+/*
+* PARAGRAPH:
+* lead mod will be scaled from rem_font_size (block `calc`)
+*/
+/*
+* BLOCKQUOTE:
+*/
+/* ../../common.blocks/variables/variables.styl end */
+/* ../../design/promo.blocks/variables/variables.styl begin */
+/* ../../design/promo.blocks/variables/variables.styl end */
+/* ../../common.blocks/calc/calc.styl begin */
+/* ../../common.blocks/calc/calc.styl end */
+/* ../../common.blocks/page/page.styl begin */
+.page {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.25rem;
+}
+/* ../../common.blocks/page/page.styl end */
+/* ../../design/promo.blocks/page/page.styl begin */
+.page {
+  padding: 0 40px;
+}
+/* ../../design/promo.blocks/page/page.styl end */
+/* ../../common.blocks/print/print.styl begin */
+@media print {
+  *,
+  *:before,
+  *:after {
+    background: transparent !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+  a[href^="#"]:after,
+  a[href^="javascript:"]:after {
+    content: "";
+  }
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+  thead {
+    display: table-header-group;
+  }
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+  img {
+    max-width: 100% !important;
+  }
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}
+/* ../../common.blocks/print/print.styl end */
+/* ../../design/promo.blocks/page/__header/page__header.styl begin */
+.page__header {
+  padding: 1.25rem 0;
+}
+/* ../../design/promo.blocks/page/__header/page__header.styl end */
+/* ../../design/promo.blocks/page/__footer/page__footer.styl begin */
+.page__footer {
+  padding: 2.5rem 0 1.25rem;
+}
+/* ../../design/promo.blocks/page/__footer/page__footer.styl end */
+/* ../../design/promo.blocks/heading/heading.styl begin */
+.heading {
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: 500;
+}
+/* ../../design/promo.blocks/heading/heading.styl end */
+/* ../../common.blocks/heading/_lvl/heading_lvl_1.styl begin */
+.heading_lvl_1 {
+  font-size: 3rem;
+  line-height: 3.75rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+/* ../../common.blocks/heading/_lvl/heading_lvl_1.styl end */
+/* ../../common.blocks/heading/_lvl/heading_lvl_2.styl begin */
+.heading_lvl_2 {
+  font-size: 2.625rem;
+  line-height: 3.28125rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+/* ../../common.blocks/heading/_lvl/heading_lvl_2.styl end */
+/* ../../common.blocks/heading/_lvl/heading_lvl_3.styl begin */
+.heading_lvl_3 {
+  font-size: 2.25rem;
+  line-height: 2.8125rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+/* ../../common.blocks/heading/_lvl/heading_lvl_3.styl end */
+/* ../../common.blocks/heading/_lvl/heading_lvl_4.styl begin */
+.heading_lvl_4 {
+  font-size: 1.875rem;
+  line-height: 2.34375rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+/* ../../common.blocks/heading/_lvl/heading_lvl_4.styl end */
+/* ../../common.blocks/paragraph/paragraph.styl begin */
+.paragraph {
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+/* ../../common.blocks/paragraph/paragraph.styl end */
+/* ../../design/promo.blocks/paragraph/paragraph.styl begin */
+.paragraph {
+  position: relative;
+}
+/* ../../design/promo.blocks/paragraph/paragraph.styl end */
+/* ../../design/promo.blocks/paragraph/_mark/paragraph_mark.styl begin */
+.paragraph_mark .paragraph__marker {
+  display: inline-block;
+  padding-right: 5px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+/* ../../design/promo.blocks/paragraph/_mark/paragraph_mark.styl end */
+/* ../../common.blocks/paragraph/_lead/paragraph_lead.styl begin */
+.paragraph_lead {
+  font-size: 1.25rem;
+  line-height: 1.5625rem;
+}
+/* ../../common.blocks/paragraph/_lead/paragraph_lead.styl end */
+/* ../../design/promo.blocks/example/example.styl begin */
+.example {
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  max-width: 980px;
+}
+/* ../../design/promo.blocks/example/example.styl end */
+/* ../../design/promo.blocks/example/__build/example__build.styl begin */
+.example__build {
+  padding: 20px;
+}
+.example__build .source {
+  margin-bottom: 10px;
+}
+/* ../../design/promo.blocks/example/__build/example__build.styl end */
+/* ../../design/promo.blocks/example/__source/example__source.styl begin */
+.example__source {
+  border-top: 1px solid #ccc;
+}
+/* ../../design/promo.blocks/example/__source/example__source.styl end */
+/* ../../design/promo.blocks/source/source.styl begin */
+.source {
+  padding: 0;
+  margin: 0;
+}
+/* ../../design/promo.blocks/source/source.styl end */
+/* ../../design/promo.blocks/figure/figure.styl begin */
+.figure {
+  margin: 0;
+}
+/* ../../design/promo.blocks/figure/figure.styl end */
+/* ../../design/promo.blocks/source/__code/source__code.styl begin */
+.source__code {
+  padding: 10px;
+}
+/* ../../design/promo.blocks/source/__code/source__code.styl end */
+/* ../../common.blocks/source/_theme/source_theme_github.styl begin */
+/* ../../../libs/highlight/src/styles/github.css begin */
+/*
+
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+
+*/
+pre code {
+  display: block;
+  padding: 0.5em;
+  color: #000;
+  background: #f8f8ff;
+}
+pre .comment,
+pre .template_comment,
+pre .diff .header,
+pre .javadoc {
+  color: #998;
+  font-style: italic;
+}
+pre .keyword,
+pre .css .rule .keyword,
+pre .winutils,
+pre .javascript .title,
+pre .lisp .title,
+pre .nginx .title,
+pre .subst,
+pre .request,
+pre .status {
+  color: #000;
+  font-weight: bold;
+}
+pre .number,
+pre .hexcolor {
+  color: #40a070;
+}
+pre .string,
+pre .tag .value,
+pre .phpdoc,
+pre .tex .formula {
+  color: #d14;
+}
+pre .title,
+pre .id {
+  color: #900;
+  font-weight: bold;
+}
+pre .javascript .title,
+pre .lisp .title,
+pre .subst {
+  font-weight: normal;
+}
+pre .class .title,
+pre .haskell .type,
+pre .vhdl .literal,
+pre .tex .command {
+  color: #458;
+  font-weight: bold;
+}
+pre .tag,
+pre .tag .title,
+pre .rules .property,
+pre .django .tag .keyword {
+  color: #000080;
+  font-weight: normal;
+}
+pre .attribute,
+pre .variable,
+pre .instancevar,
+pre .lisp .body {
+  color: #008080;
+}
+pre .regexp {
+  color: #009926;
+}
+pre .class {
+  color: #458;
+  font-weight: bold;
+}
+pre .symbol,
+pre .ruby .symbol .string,
+pre .ruby .symbol .keyword,
+pre .ruby .symbol .keymethods,
+pre .lisp .keyword,
+pre .tex .special,
+pre .input_number {
+  color: #990073;
+}
+pre .builtin,
+pre .built_in,
+pre .lisp .title {
+  color: #0086b3;
+}
+pre .preprocessor,
+pre .pi,
+pre .doctype,
+pre .shebang,
+pre .cdata {
+  color: #999;
+  font-weight: bold;
+}
+pre .deletion {
+  background: #fdd;
+}
+pre .addition {
+  background: #dfd;
+}
+pre .diff .change {
+  background: #0086b3;
+}
+pre .chunk {
+  color: #aaa;
+}
+pre .tex .formula {
+  opacity: 0.5;
+}
+/* ../../../libs/highlight/src/styles/github.css end */
+/* ../../common.blocks/source/_theme/source_theme_github.styl end */
+/* ../../libs/bem-components/common.blocks/image/image.styl begin */
+.image {
+  border: 0;
+}
+/* ../../libs/bem-components/common.blocks/image/image.styl end */
+/* ../../design/promo.blocks/blockquote/__content/blockquote__content.styl begin */
+.blockquote__content {
+  font-size: 1.25rem;
+}
+/* ../../design/promo.blocks/blockquote/__content/blockquote__content.styl end */
+/* ../../design/promo.blocks/blockquote/__footer/blockquote__footer.styl begin */
+.blockquote__footer::before {
+  content: '\2014 \00A0';
+}
+/* ../../design/promo.blocks/blockquote/__footer/blockquote__footer.styl end */
+/* ../../design/promo.blocks/blockquote/blockquote.styl begin */
+.blockquote {
+  margin: 0 0 20px;
+  padding: 10px 20px;
+}
+/* ../../design/promo.blocks/blockquote/blockquote.styl end */
