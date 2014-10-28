@@ -11,7 +11,7 @@
             content : [
                 {
                     block : 'gh-ribbon',
-                    url : 'https://github.com/verybigman/bem-content'
+                    url : '//github.com/verybigman/bem-content'
                 },
                 { block : 'heading', content : 'BEM Content' },
                 {
@@ -310,11 +310,11 @@
                                             content : [
                                                 {
                                                     block : 'image',
-                                                    url : 'https://raw.githubusercontent.com/bem/bem-identity/master/sign/sign.png'
+                                                    url : '//raw.githubusercontent.com/bem/bem-identity/master/sign/sign.png'
                                                 },
                                                 {
                                                     block : 'image',
-                                                    url : 'https://raw.githubusercontent.com/bem/bem-identity/master/sign/sign.png',
+                                                    url : '//raw.githubusercontent.com/bem/bem-identity/master/sign/sign.png',
                                                     mods : { wrap : true },
                                                     caption : 'This is BEM logo caption',
                                                     width : '60px',
@@ -331,11 +331,11 @@
                                                     content : [
                                                         '{\n',
                                                         '   block : \'image\',\n',
-                                                        '   url : \'https://raw.githubusercontent.com/bem/bem-identity/master/sign/sign.png\'',
+                                                        '   url : \'//raw.githubusercontent.com/bem/bem-identity/master/sign/sign.png\'',
                                                         '},\n',
                                                         '{\n',
                                                         '   block : \'image\',\n',
-                                                        '   url : \'https://raw.githubusercontent.com/bem/bem-identity/master/sign/sign.png\'',
+                                                        '   url : \'//raw.githubusercontent.com/bem/bem-identity/master/sign/sign.png\'',
                                                         '   mods : { wrap : true },\n',
                                                         '   caption : \'This is BEM logo caption\',\n',
                                                         '   width : \'60px\',\n',
@@ -497,11 +497,11 @@
                     content : [
                         {
                             block : 'link',
-                            url : 'http://bem.info',
+                            url : '//bem.info',
                             content : [
                                 {
                                     block : 'image',
-                                    url : 'https://rawgit.com/bem/bem-identity/master/sign/sign.png',
+                                    url : '//rawgit.com/bem/bem-identity/master/sign/sign.png',
                                     width: '50px'
                                 }
                             ]
