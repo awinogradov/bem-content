@@ -3,8 +3,8 @@
     title : 'BEM Content',
     favicon : 'www/favicon.ico',
     head : [{ elem : 'meta', attrs : { name : 'viewport', content : 'width=device-width, initial-scale=1.0' }}],
-    styles : [{ elem : 'css', url : '//raw.githubusercontent.com/verybigman/bem-content/gh-pages/promo.pages/index/_index.css' }],
-    scripts : [{ elem : 'js', url : '//raw.githubusercontent.com/verybigman/bem-content/gh-pages/promo.pages/index/_index.js' }],
+    styles : [{ elem : 'css', url : '//rawgit.com/verybigman/bem-content/gh-pages/promo.pages/index/_index.css' }],
+    scripts : [{ elem : 'js', url : '//rawgit.com/verybigman/bem-content/gh-pages/promo.pages/index/_index.js' }],
     content : [
         {
             elem : 'header',
