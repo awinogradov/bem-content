@@ -3,19 +3,16 @@ block('figure')(
     tag()('figure'),
 
     content()(function() {
-        var content = [
+        return [
             {
                 elem : 'content',
                 content : this.ctx.content
+            },
+            this.ctx.caption && {
+                elem : 'caption',
+                content : this.ctx.caption
             }
         ];
-
-        this.ctx.caption && content.push({
-            elem : 'caption',
-            content : this.ctx.caption
-        });
-
-        return content;
     }),
 
     elem('caption').tag()('figcaption')
