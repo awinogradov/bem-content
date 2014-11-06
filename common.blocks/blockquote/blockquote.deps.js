@@ -1,6 +1,6 @@
 ({
     mustDeps : [
-        { block : 'calc' },
+        { block : 'calc', elems : 'font' },
         { block : 'paragraph' },
         { elems : ['content', 'footer'] }
     ],

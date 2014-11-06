@@ -1,7 +1,7 @@
 ({
     mustDeps : [
         { block : 'i-bem', elems : 'dom' },
-        { block : 'calc' }
+        { block : 'calc', elems : 'font' }
     ],
     shouldDeps : [
         { block : 'figure' },
