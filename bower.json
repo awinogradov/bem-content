@@ -1,6 +1,6 @@
 {
     "name": "bem-content",
-    "version": "1.0.0-alfa",
+    "version": "1.0.0-beta",
     "description": "Library for right work with content in BEM methodology",
     "repository": {
         "type": "git",
