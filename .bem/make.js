@@ -37,6 +37,7 @@ MAKE.decl('SetsNode', {
         return {
             'library' : [
                 'common.blocks',
+                'accessibility.blocks',
                 'design/common.blocks',
                 'test.blocks'
             ]
@@ -74,6 +75,7 @@ MAKE.decl('BundleNode', {
             'libs/bem-components/common.blocks',
             'libs/bem-components/desktop.blocks',
             'common.blocks',
+            'accessibility.blocks',
             'promo.blocks',
             'design/promo.blocks',
             'test.blocks'

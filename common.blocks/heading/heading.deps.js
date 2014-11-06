@@ -1,6 +1,6 @@
 ({
     mustDeps : [
-        { block : 'calc' }
+        { block : 'calc', elems : 'font' }
     ],
     shouldDeps : [
         { mods : { lvl : 1 } },
