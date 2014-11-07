@@ -42,7 +42,7 @@ See more examples in `promo.pages/index/index.bemjson.js` (build it with `bem ma
 
 ## Calculating
 
-Lib have block `calc` for calculating fonts sizes. Any sizes writed in rem. It's absolutely right way for fonts. For more info about math model you can watch [here](https://github.com/verybigman/bem-content/blob/master/common.blocks/calc/calc.styl).
+Lib have block `calc` for calculating fonts sizes. Any sizes writed in rem. It's absolutely right way for fonts. For more info about math model you can watch [here](https://github.com/verybigman/bem-content/blob/master/common.blocks/calc/calc.en.md).
 
 ## Customize
 
