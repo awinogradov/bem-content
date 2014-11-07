@@ -17,7 +17,12 @@ Use [bower-npm-install](https://github.com/arikon/bower-npm-install) to install 
 Add levels from bem-content to your `make.js` file:
 
 ``` javascript
-[ 'libs/bem-content/common.blocks' ]
+[ 
+    // base blocks functionality
+	'libs/bem-content/common.blocks',
+    // blocks with accessebility templates overriding
+    'libs/bem-content/accessebility.blocks'
+]
 ```
 ## Easy example
 
