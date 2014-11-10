@@ -92,18 +92,23 @@
   padding: 2.5rem 0 1.25rem;
 }
 /* ../../design/promo.blocks/page/__footer/page__footer.styl end */
-/* ../../libs/bem-components/common.blocks/image/image.styl begin */
-.image {
-  border: 0;
-}
-/* ../../libs/bem-components/common.blocks/image/image.styl end */
-/* ../../design/promo.blocks/gh-ribbon/gh-ribbon.styl begin */
-.gh-ribbon {
+/* ../../libs/bem-social/common.blocks/github-ribbon/github-ribbon.styl begin */
+.github-ribbon {
   position: absolute;
   top: 0;
+}
+.github-ribbon .image {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+.github-ribbon.github-ribbon_left {
+  left: 0;
+}
+.github-ribbon.github-ribbon_right {
   right: 0;
 }
-/* ../../design/promo.blocks/gh-ribbon/gh-ribbon.styl end */
+/* ../../libs/bem-social/common.blocks/github-ribbon/github-ribbon.styl end */
 /* ../../design/promo.blocks/heading/heading.styl begin */
 .heading {
   font-family: Helvetica, Arial, sans-serif;
@@ -153,20 +158,20 @@
   position: relative;
 }
 /* ../../design/promo.blocks/paragraph/paragraph.styl end */
-/* ../../design/promo.blocks/paragraph/_mark/paragraph_mark.styl begin */
-.paragraph_mark .paragraph__marker {
+/* ../../common.blocks/paragraph/_type/paragraph_type_lead.styl begin */
+.paragraph_type_lead {
+  font-size: 1.25rem;
+  line-height: 1.5625rem;
+}
+/* ../../common.blocks/paragraph/_type/paragraph_type_lead.styl end */
+/* ../../design/promo.blocks/paragraph/_type/paragraph_type_marked.styl begin */
+.paragraph_type_marked .paragraph__marker {
   display: inline-block;
   padding-right: 5px;
   text-transform: uppercase;
   font-weight: bold;
 }
-/* ../../design/promo.blocks/paragraph/_mark/paragraph_mark.styl end */
-/* ../../common.blocks/paragraph/_lead/paragraph_lead.styl begin */
-.paragraph_lead {
-  font-size: 1.25rem;
-  line-height: 1.5625rem;
-}
-/* ../../common.blocks/paragraph/_lead/paragraph_lead.styl end */
+/* ../../design/promo.blocks/paragraph/_type/paragraph_type_marked.styl end */
 /* ../../design/promo.blocks/example/example.styl begin */
 .example {
   background: #fff;
@@ -322,6 +327,11 @@ pre .tex .formula {
 }
 /* ../../../libs/highlight/src/styles/github.css end */
 /* ../../common.blocks/source/_theme/source_theme_github.styl end */
+/* ../../libs/bem-components/common.blocks/image/image.styl begin */
+.image {
+  border: 0;
+}
+/* ../../libs/bem-components/common.blocks/image/image.styl end */
 /* ../../design/promo.blocks/blockquote/__content/blockquote__content.styl begin */
 .blockquote__content {
   font-size: 1.25rem;
