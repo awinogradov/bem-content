@@ -98,7 +98,7 @@
                                             content : [
                                                 {
                                                     block : 'paragraph',
-                                                    mods : { lead : true },
+                                                    mods : { type : 'lead' },
                                                     content : [
                                                         'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. ',
                                                         'Aenean commodo ligula eget dolor. Aenean massa. ',
@@ -119,6 +119,7 @@
                                                 },
                                                 {
                                                     block : 'paragraph',
+                                                    mods : { type : 'marked' },
                                                     mark : 'nb',
                                                     content : [
                                                         'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. ',
