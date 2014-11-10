@@ -7,12 +7,13 @@
  * http://www.opensource.org/licenses/mit-license.php
  * http://www.gnu.org/licenses/gpl.html
  *
- * @version 0.0.15
+ * @version 0.1.0
  */
 
 (function(global) {
 
 var undef,
+
     DECL_STATES = {
         NOT_RESOLVED : 'NOT_RESOLVED',
         IN_RESOLVING : 'IN_RESOLVING',
@@ -26,14 +27,10 @@ var undef,
     create = function() {
         var curOptions = {
                 trackCircularDependencies : true,
-                allowMultipleDeclarations : true,
-                onError                   : function(e) {
-                    throw e;
-                }
+                allowMultipleDeclarations : true
             },
 
             modulesStorage = {},
-            declsToCalc = [],
             waitForNextTick = false,
             pendingRequires = [],
 
@@ -50,45 +47,47 @@ var undef,
                 }
 
                 var module = modulesStorage[name];
-                if(module) {
-                    if(!curOptions.allowMultipleDeclarations) {
-                        onMultipleDeclarationDetected(name);
-                        return;
-                    }
-                }
-                else {
+                if(!module) {
                     module = modulesStorage[name] = {
                         name : name,
                         decl : undef
                     };
                 }
 
-                declsToCalc.push(module.decl = {
-                    name          : name,
-                    fn            : declFn,
-                    state         : DECL_STATES.NOT_RESOLVED,
-                    deps          : deps,
-                    prevDecl      : module.decl,
-                    dependOnDecls : [],
-                    dependents    : [],
-                    exports       : undef
-                });
+                module.decl = {
+                    name       : name,
+                    prev       : module.decl,
+                    fn         : declFn,
+                    state      : DECL_STATES.NOT_RESOLVED,
+                    deps       : deps,
+                    dependents : [],
+                    exports    : undef
+                };
             },
 
             /**
              * Requires modules
-             * @param {String[]} modules
+             * @param {String|String[]} modules
              * @param {Function} cb
+             * @param {Function} [errorCb]
              */
-            require = function(modules, cb) {
+            require = function(modules, cb, errorCb) {
+                if(typeof modules === 'string') {
+                    modules = [modules];
+                }
+
                 if(!waitForNextTick) {
                     waitForNextTick = true;
                     nextTick(onNextTick);
                 }
 
                 pendingRequires.push({
-                    modules : modules,
-                    cb      : cb
+                    deps : modules,
+                    cb   : function(exports, error) {
+                        error?
+                            (errorCb || onError)(error) :
+                            cb.apply(global, exports);
+                    }
                 });
             },
 
@@ -127,131 +126,128 @@ var undef,
 
             onNextTick = function() {
                 waitForNextTick = false;
-                if(calcDeclDeps()) {
-                    applyRequires();
-                }
-            },
-
-            calcDeclDeps = function() {
-                var i = 0, decl, j, dep, dependOnDecls,
-                    hasError = false;
-                while(decl = declsToCalc[i++]) {
-                    j = 0;
-                    dependOnDecls = decl.dependOnDecls;
-                    while(dep = decl.deps[j++]) {
-                        if(!isDefined(dep)) {
-                            onModuleNotFound(dep, decl);
-                            hasError = true;
-                            break;
-                        }
-                        dependOnDecls.push(modulesStorage[dep].decl);
-                    }
-
-                    if(hasError) {
-                        break;
-                    }
-
-                    if(decl.prevDecl) {
-                        dependOnDecls.push(decl.prevDecl);
-                        decl.prevDecl = undef;
-                    }
-                }
-
-                declsToCalc = [];
-                return !hasError;
+                applyRequires();
             },
 
             applyRequires = function() {
                 var requiresToProcess = pendingRequires,
-                    require, i = 0, j, dep, dependOnDecls, applyCb;
+                    i = 0, require;
 
                 pendingRequires = [];
 
                 while(require = requiresToProcess[i++]) {
-                    j = 0; dependOnDecls = []; applyCb = true;
-                    while(dep = require.modules[j++]) {
-                        if(!isDefined(dep)) {
-                            onModuleNotFound(dep);
-                            applyCb = false;
-                            break;
-                        }
-
-                        dependOnDecls.push(modulesStorage[dep].decl);
-                    }
-                    applyCb && applyRequire(dependOnDecls, require.cb);
+                    requireDeps(null, require.deps, [], require.cb);
                 }
             },
 
-            applyRequire = function(dependOnDecls, cb) {
-                requireDecls(
-                    dependOnDecls,
-                    function(exports) {
-                        cb.apply(global, exports);
-                    },
-                    []);
-            },
+            requireDeps = function(fromDecl, deps, path, cb) {
+                var unresolvedDepsCnt = deps.length;
+                if(!unresolvedDepsCnt) {
+                    cb([]);
+                }
 
-            requireDecls = function(decls, cb, path) {
-                var unresolvedDeclCnt = decls.length;
+                var decls = [],
+                    i = 0, len = unresolvedDepsCnt,
+                    dep, decl;
 
-                if(unresolvedDeclCnt) {
-                    var onDeclResolved,
-                        i = 0, decl;
-
-                    while(decl = decls[i++]) {
-                        if(decl.state === DECL_STATES.RESOLVED) {
-                            --unresolvedDeclCnt;
+                while(i < len) {
+                    dep = deps[i++];
+                    if(typeof dep === 'string') {
+                        if(!modulesStorage[dep]) {
+                            cb(null, buildModuleNotFoundError(dep, fromDecl));
+                            return;
                         }
-                        else {
-                            if(curOptions.trackCircularDependencies && isDependenceCircular(decl, path)) {
-                                onCircularDependenceDetected(decl, path);
+
+                        decl = modulesStorage[dep].decl;
+                    }
+                    else {
+                        decl = dep;
+                    }
+
+                    if(decl.state === DECL_STATES.IN_RESOLVING &&
+                            curOptions.trackCircularDependencies &&
+                            isDependenceCircular(decl, path)) {
+                        cb(null, buildCircularDependenceError(decl, path));
+                        return;
+                    }
+
+                    decls.push(decl);
+
+                    startDeclResolving(
+                        decl,
+                        path,
+                        function(_, error) {
+                            if(error) {
+                                cb(null, error);
+                                return;
                             }
 
-                            decl.state === DECL_STATES.NOT_RESOLVED && startDeclResolving(decl, path);
-
-                            decl.state === DECL_STATES.RESOLVED? // decl resolved synchronously
-                                --unresolvedDeclCnt :
-                                decl.dependents.push(onDeclResolved || (onDeclResolved = function() {
-                                    --unresolvedDeclCnt || onDeclsResolved(decls, cb);
-                                }));
-                        }
-                    }
+                            if(!--unresolvedDepsCnt) {
+                                var exports = [],
+                                    i = 0, decl;
+                                while(decl = decls[i++]) {
+                                    exports.push(decl.exports);
+                                }
+                                cb(exports);
+                            }
+                        });
                 }
-
-                unresolvedDeclCnt || onDeclsResolved(decls, cb);
             },
 
-            onDeclsResolved = function(decls, cb) {
-                var exports = [],
-                    i = 0, decl;
-                while(decl = decls[i++]) {
-                    exports.push(decl.exports);
+            startDeclResolving = function(decl, path, cb) {
+                if(decl.state === DECL_STATES.RESOLVED) {
+                    cb(decl.exports);
+                    return;
                 }
-                cb(exports);
-            },
+                else {
+                    decl.dependents.push(cb);
+                }
 
-            startDeclResolving = function(decl, path) {
+                if(decl.state === DECL_STATES.IN_RESOLVING) {
+                    return;
+                }
+
+                if(decl.prev && !curOptions.allowMultipleDeclarations) {
+                    provideError(decl, buildMultipleDeclarationError(decl));
+                    return;
+                }
+
                 curOptions.trackCircularDependencies && (path = path.slice()).push(decl);
+
+                var isProvided = false,
+                    deps = decl.prev? decl.deps.concat([decl.prev]) : decl.deps;
+
                 decl.state = DECL_STATES.IN_RESOLVING;
-                var isProvided = false;
-                requireDecls(
-                    decl.dependOnDecls,
-                    function(depDeclsExports) {
+                requireDeps(
+                    decl,
+                    deps,
+                    path,
+                    function(depDeclsExports, error) {
+                        if(error) {
+                            provideError(decl, error);
+                            return;
+                        }
+
+                        depDeclsExports.unshift(function(exports, error) {
+                            if(isProvided) {
+                                cb(null, buildDeclAreadyProvidedError(decl));
+                                return;
+                            }
+
+                            isProvided = true;
+                            error?
+                                provideError(decl, error) :
+                                provideDecl(decl, exports);
+                        });
+
                         decl.fn.apply(
                             {
                                 name   : decl.name,
                                 deps   : decl.deps,
                                 global : global
                             },
-                            [function(exports) {
-                                isProvided?
-                                    onDeclAlreadyProvided(decl) :
-                                    isProvided = true;
-                                provideDecl(decl, exports);
-                                return exports;
-                            }].concat(depDeclsExports));
-                    },
-                    path);
+                            depDeclsExports);
+                    });
             },
 
             provideDecl = function(decl, exports) {
@@ -260,42 +256,21 @@ var undef,
 
                 var i = 0, dependent;
                 while(dependent = decl.dependents[i++]) {
-                    dependent(decl.exports);
+                    dependent(exports);
                 }
 
                 decl.dependents = undef;
             },
 
-            onError = function(e) {
-                nextTick(function() {
-                    curOptions.onError(e);
-                });
-            },
+            provideError = function(decl, error) {
+                decl.state = DECL_STATES.NOT_RESOLVED;
 
-            onModuleNotFound = function(name, decl) {
-                onError(Error(
-                    decl?
-                        'Module "' + decl.name + '": can\'t resolve dependence "' + name + '"' :
-                        'Required module "' + name + '" can\'t be resolved'));
-            },
-
-            onCircularDependenceDetected = function(decl, path) {
-                var strPath = [],
-                    i = 0, pathDecl;
-                while(pathDecl = path[i++]) {
-                    strPath.push(pathDecl.name);
+                var i = 0, dependent;
+                while(dependent = decl.dependents[i++]) {
+                    dependent(null, error);
                 }
-                strPath.push(decl.name);
 
-                onError(Error('Circular dependence is detected: "' + strPath.join(' -> ') + '"'));
-            },
-
-            onDeclAlreadyProvided = function(decl) {
-                onError(Error('Declaration of module "' + decl.name + '" is already provided'));
-            },
-
-            onMultipleDeclarationDetected = function(name) {
-                onError(Error('Multiple declarations of module "' + name + '" are detected'));
+                decl.dependents = [];
             };
 
         return {
@@ -306,6 +281,37 @@ var undef,
             isDefined  : isDefined,
             setOptions : setOptions
         };
+    },
+
+    onError = function(e) {
+        nextTick(function() {
+            throw e;
+        });
+    },
+
+    buildModuleNotFoundError = function(name, decl) {
+        return Error(decl?
+            'Module "' + decl.name + '": can\'t resolve dependence "' + name + '"' :
+            'Required module "' + name + '" can\'t be resolved');
+    },
+
+    buildCircularDependenceError = function(decl, path) {
+        var strPath = [],
+            i = 0, pathDecl;
+        while(pathDecl = path[i++]) {
+            strPath.push(pathDecl.name);
+        }
+        strPath.push(decl.name);
+
+        return Error('Circular dependence has been detected: "' + strPath.join(' -> ') + '"');
+    },
+
+    buildDeclAreadyProvidedError = function(decl) {
+        return Error('Declaration of module "' + decl.name + '" has already been provided');
+    },
+
+    buildMultipleDeclarationError = function(decl) {
+        return Error('Multiple declarations of module "' + decl.name + '" have been detected');
     },
 
     isDependenceCircular = function(decl, path) {
@@ -1632,7 +1638,7 @@ provide(/** @exports */{
     /**
      * Extends a given target by
      * @param {Object} target object to extend
-     * @param {...Object} source
+     * @param {Object} source
      * @returns {Object}
      */
     extend : function(target, source) {
@@ -2338,14 +2344,14 @@ var DOM = BEM.decl('i-bem__dom',/** @lends BEMDOM.prototype */{
         select && (domElems = domElems.add(ctxElem[select](selector)));
 
         if(onlyFirst) {
-            return domElems[0]? initBlock(blockName, domElems.eq(0), undef, true) : null;
+            return domElems[0]? initBlock(blockName, domElems.eq(0), undef, true)._init() : null;
         }
 
         var res = [],
             uniqIds = {};
 
         domElems.each(function(i, domElem) {
-            var block = initBlock(blockName, $(domElem), undef, true);
+            var block = initBlock(blockName, $(domElem), undef, true)._init();
             if(!uniqIds[block._uniqId]) {
                 uniqIds[block._uniqId] = true;
                 res.push(block);
@@ -3471,7 +3477,7 @@ var DOM = BEM.decl('i-bem__dom',/** @lends BEMDOM.prototype */{
  * @returns {BEMDOM}
  */
 $.fn.bem = function(blockName, params) {
-    return initBlock(blockName, this, params, true);
+    return initBlock(blockName, this, params, true)._init();
 };
 
 // Set default scope after DOM ready
@@ -3539,50 +3545,65 @@ modules.define('loader_type_js', function(provide) {
 var loading = {},
     loaded = {},
     head = document.getElementsByTagName('head')[0],
-    onLoad = function(path) {
-        loaded[path] = true;
+    runCallbacks = function(path, type) {
         var cbs = loading[path], cb, i = 0;
         delete loading[path];
         while(cb = cbs[i++]) {
-            cb();
+            cb[type] && cb[type]();
         }
+    },
+    onSuccess = function(path) {
+        loaded[path] = true;
+        runCallbacks(path, 'success');
+    },
+    onError = function(path) {
+        runCallbacks(path, 'error');
     };
 
 provide(
     /**
      * @exports
      * @param {String} path resource link
-     * @param {Function} cb executes when resource is loaded
+     * @param {Function} success to be called if the script succeeds
+     * @param {Function} error to be called if the script fails
      */
-    function(path, cb) {
+    function(path, success, error) {
         if(loaded[path]) {
-            cb();
+            success();
             return;
         }
 
         if(loading[path]) {
-            loading[path].push(cb);
+            loading[path].push({ success : success, error : error });
             return;
         }
 
-        loading[path] = [cb];
+        loading[path] = [{ success : success, error : error }];
 
         var script = document.createElement('script');
         script.type = 'text/javascript';
         script.charset = 'utf-8';
         script.src = (location.protocol === 'file:' && !path.indexOf('//')? 'http:' : '') + path;
-        script.onreadystatechange === null?
+
+        if('onload' in script) {
+            script.onload = function() {
+                script.onload = script.onerror = null;
+                onSuccess(path);
+            };
+
+            script.onerror = function() {
+                script.onload = script.onerror = null;
+                onError(path);
+            };
+        } else {
             script.onreadystatechange = function() {
                 var readyState = this.readyState;
                 if(readyState === 'loaded' || readyState === 'complete') {
                     script.onreadystatechange = null;
-                    onLoad(path);
+                    onSuccess(path);
                 }
-            } :
-            script.onload = script.onerror = function() {
-                script.onload = script.onerror = null;
-                onLoad(path);
             };
+        }
 
         head.insertBefore(script, head.lastChild);
     }
@@ -3752,6 +3773,51 @@ $(function() {
 });
 
 /* ../../libs/bem-core/common.blocks/i-bem/__dom/_init/i-bem__dom_init_auto.js end */
+;
+/* ../../libs/bem-social/common.blocks/github-button/github-button.browser.js begin */
+modules.require([], function() {
+    (function(d, s, id){
+        var js,
+            fjs = d.getElementsByTagName(s)[0];
+        if(d.getElementById(id)) {
+            return;
+        }
+        js = d.createElement(s);
+        js.async = true;
+        js.defer = true;
+        js.id = id;
+        js.src = 'https://buttons.github.io/buttons.js';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'github-bjs'));
+});
+
+/* ../../libs/bem-social/common.blocks/github-button/github-button.browser.js end */
+;
+/* ../../libs/bem-social/common.blocks/twitter/twitter.browser.js begin */
+modules.require([], function() {
+    window.twttr = (function(d, s, id){
+        var t,
+            js,
+            fjs = d.getElementsByTagName(s)[0];
+        if(d.getElementById(id)) {
+            return;
+        }
+        js = d.createElement(s);
+        js.id = id;
+        js.src = 'https://platform.twitter.com/widgets.js';
+        fjs.parentNode.insertBefore(js, fjs);
+        return window.twttr || (
+            t = {
+                _e : [],
+                ready : function(f){
+                    t._e.push(f);
+                }
+            }
+        );
+    }(document, 'script', 'twitter-wjs'));
+});
+
+/* ../../libs/bem-social/common.blocks/twitter/twitter.browser.js end */
 ;
 /* ../../common.blocks/source/source.js begin */
 modules.define(
@@ -4656,7 +4722,7 @@ $(function() {
 /* ../../libs/bem-core/common.blocks/jquery/__event/_type/jquery__event_type_pointerclick.js end */
 ;
 /* ../../libs/bem-core/common.blocks/jquery/__event/_type/jquery__event_type_pointernative.js begin */
-/**
+/*!
  * Basic pointer events polyfill
  */
 ;(function(global, factory) {
@@ -4688,7 +4754,7 @@ var doc = document,
 delete $.event.special.pointerenter;
 delete $.event.special.pointerleave;
 
-/**
+/*!
  * Returns a snapshot of inEvent, with writable properties.
  *
  * @param {Event} event An event that contains properties to copy.
@@ -4727,7 +4793,7 @@ var MOUSE_PROPS = {
     mousePropsLen = mouseProps.length,
     mouseDefaults = mouseProps.map(function(prop) { return MOUSE_PROPS[prop] });
 
-/**
+/*!
  * Pointer event constructor
  *
  * @param {String} type
@@ -4778,7 +4844,7 @@ function PointerEvent(type, params) {
     return e;
 }
 
-/**
+/*!
  * Implements a map of pointer states
  * @returns {PointerMap}
  * @constructor
@@ -4845,7 +4911,7 @@ var dispatcher = {
     eventMap : {},
     eventSourceList : [],
 
-    /**
+    /*!
      * Add a new event source that will generate pointer events
      */
     registerSource : function(name, source) {
@@ -4947,7 +5013,7 @@ var dispatcher = {
         e._handledByPE = true;
     },
 
-    /**
+    /*!
      * Sets up event listeners
      */
     listen : function(target, events) {
@@ -4956,7 +5022,7 @@ var dispatcher = {
         }, this);
     },
 
-    /**
+    /*!
      * Removes event listeners
      */
     unlisten : function(target, events) {
@@ -4977,7 +5043,7 @@ var dispatcher = {
         return event._target;
     },
 
-    /**
+    /*!
      * Creates a new Event of type `type`, based on the information in `event`
      */
     makeEvent : function(type, event) {
@@ -4991,7 +5057,7 @@ var dispatcher = {
         return e;
     },
 
-    /**
+    /*!
      * Dispatches the event to its target
      */
     dispatchEvent : function(event) {
@@ -5001,7 +5067,7 @@ var dispatcher = {
         }
     },
 
-    /**
+    /*!
      * Makes and dispatch an event in one call
      */
     fireEvent : function(type, event) {
@@ -5149,7 +5215,7 @@ var touchEvents = {
         return this.firstTouch === touch.identifier;
     },
 
-    /**
+    /*!
      * Sets primary touch if there no pointers, or the only pointer is the mouse
      */
     setPrimaryTouch : function(touch) {
@@ -5236,7 +5302,7 @@ var touchEvents = {
         // return "true" for things to be much easier
         return true;
     },
-    
+
     findTouch : function(touches, pointerId) {
         for(var i = 0, l = touches.length, t; i < l && (t = touches[i]); i++) {
             if(t.identifier === pointerId) {
@@ -5244,13 +5310,13 @@ var touchEvents = {
             }
         }
     },
-    
-    /**
+
+    /*!
      * In some instances, a touchstart can happen without a touchend.
      * This leaves the pointermap in a broken state.
      * Therefore, on every touchstart, we remove the touches
      * that did not fire a touchend event.
-     * 
+     *
      * To keep state globally consistent, we fire a pointercancel
      * for this "abandoned" touch
      */
@@ -5260,7 +5326,7 @@ var touchEvents = {
         // been processed yet.
         if(pointermap.pointers() >= touches.length) {
             var d = [];
-            
+
             pointermap.forEach(function(pointer, pointerId) {
                 // Never remove pointerId == 1, which is mouse.
                 // Touch identifiers are 2 smaller than their pointerId, which is the
@@ -5268,12 +5334,12 @@ var touchEvents = {
                 if(pointerId === MOUSE_POINTER_ID || this.findTouch(touches, pointerId - 2)) return;
                 d.push(pointer.outEvent);
             }, this);
-            
+
             d.forEach(this.cancelOut, this);
         }
     },
 
-    /**
+    /*!
      * Prevents synth mouse events from creating pointer events
      */
     dedupSynthMouse : function(touchEvent) {
@@ -5292,20 +5358,20 @@ var touchEvents = {
             }, TOUCH_DEDUP_TIMEOUT);
         }
     },
-    
+
     touchstart : function(event) {
         var touchEvent = event.originalEvent;
 
         this.vacuumTouches(touchEvent);
         this.setPrimaryTouch(touchEvent.changedTouches[0]);
         this.dedupSynthMouse(touchEvent);
-        
+
         if(!this.scrolling) {
             this.clickCount++;
             this.processTouches(event, this.overDown);
         }
     },
-    
+
     touchmove : function(event) {
         var touchEvent = event.originalEvent;
         if(!this.scrolling) {
@@ -5328,17 +5394,17 @@ var touchEvents = {
             }
         }
     },
-    
+
     touchend : function(event) {
         var touchEvent = event.originalEvent;
         this.dedupSynthMouse(touchEvent);
         this.processTouches(event, this.upOut);
     },
-    
+
     touchcancel : function(event) {
         this.processTouches(event, this.cancelOut);
     },
-    
+
     overDown : function(pEvent) {
         var target = pEvent.target;
         pointermap.set(pEvent.pointerId, {
@@ -5415,15 +5481,15 @@ var msEvents = {
         'MSPointerOver',
         'MSPointerCancel'
     ],
-    
+
     register : function(target) {
         dispatcher.listen(target, this.events);
     },
-    
+
     unregister : function(target) {
         dispatcher.unlisten(target, this.events);
     },
-    
+
     POINTER_TYPES : [
         '',
         'unavailable',
@@ -5431,46 +5497,46 @@ var msEvents = {
         'pen',
         'mouse'
     ],
-    
+
     prepareEvent : function(event) {
         var e = cloneEvent(event);
         HAS_BITMAP_TYPE && (e.pointerType = this.POINTER_TYPES[event.pointerType]);
         return e;
     },
-    
+
     MSPointerDown : function(event) {
         pointermap.set(event.pointerId, event);
         var e = this.prepareEvent(event);
         dispatcher.down(e);
     },
-    
+
     MSPointerMove : function(event) {
         var e = this.prepareEvent(event);
         dispatcher.move(e);
     },
-    
+
     MSPointerUp : function(event) {
         var e = this.prepareEvent(event);
         dispatcher.up(e);
         this.cleanup(event.pointerId);
     },
-    
+
     MSPointerOut : function(event) {
         var e = this.prepareEvent(event);
         dispatcher.leaveOut(e);
     },
-    
+
     MSPointerOver : function(event) {
         var e = this.prepareEvent(event);
         dispatcher.enterOver(e);
     },
-    
+
     MSPointerCancel : function(event) {
         var e = this.prepareEvent(event);
         dispatcher.cancel(e);
         this.cleanup(event.pointerId);
     },
-    
+
     cleanup : function(id) {
         pointermap['delete'](id);
     }
