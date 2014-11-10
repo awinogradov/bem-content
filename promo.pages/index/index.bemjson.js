@@ -179,7 +179,7 @@
                                                         '},\n',
                                                         '{\n',
                                                         '   block : \'paragraph\',\n',
-                                                        '   mods : { type : \'marked\' },',
+                                                        '   mods : { type : \'marked\' },\n',
                                                         '   mark : \'nb\',\n',
                                                         '   content : [\n',
                                                         '       \'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. \',\n',
