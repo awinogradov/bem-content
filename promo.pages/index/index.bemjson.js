@@ -10,16 +10,34 @@
             elem : 'header',
             content : [
                 {
-                    block : 'gh-ribbon',
+                    block : 'github-ribbon',
+                    mods : { theme : 'darkblue', right : true },
                     url : '//github.com/verybigman/bem-content'
                 },
                 { block : 'heading', content : 'BEM Content' },
                 {
                     block : 'paragraph',
-                    mods : { lead : true },
+                    mods : { type : 'lead' },
                     content : [
                         'Library for simple work with static content.'
                     ]
+                },
+                {
+                    block : 'github-button',
+                    mods : { type : 'star', count : true },
+                    user : 'verybigman',
+                    repo : 'bem-content'
+                },
+                {
+                    block : 'twitter',
+                    mods : { widget : 'share' },
+                    url : 'https://github.com/verybigman/bem-content',
+                    text : 'Отличный набор блоков для верстки статики в терминах БЭМ',
+                    via : 'verybigman',
+                    related : 'bem_ru',
+                    hashtags : 'bem,b_',
+                    size : 'small',
+                    lang : 'ru'
                 }
             ]
         },
@@ -98,7 +116,7 @@
                                             content : [
                                                 {
                                                     block : 'paragraph',
-                                                    mods : { lead : true },
+                                                    mods : { type : 'lead' },
                                                     content : [
                                                         'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. ',
                                                         'Aenean commodo ligula eget dolor. Aenean massa. ',
@@ -119,6 +137,7 @@
                                                 },
                                                 {
                                                     block : 'paragraph',
+                                                    mods : { type : 'marked' },
                                                     mark : 'nb',
                                                     content : [
                                                         'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. ',
@@ -139,7 +158,7 @@
                                                     content : [
                                                         '{\n',
                                                         '   block : \'paragraph\',\n',
-                                                        '   mods : { lead : true },\n',
+                                                        '   mods : { type : \'lead\' },\n',
                                                         '   content : [\n',
                                                         '       \'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. \',\n',
                                                         '       \'Aenean commodo ligula eget dolor. Aenean massa. \',\n',
@@ -160,6 +179,7 @@
                                                         '},\n',
                                                         '{\n',
                                                         '   block : \'paragraph\',\n',
+                                                        '   mods : { type : \'marked\' },',
                                                         '   mark : \'nb\',\n',
                                                         '   content : [\n',
                                                         '       \'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. \',\n',

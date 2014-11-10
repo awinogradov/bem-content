@@ -74,6 +74,8 @@ MAKE.decl('BundleNode', {
             'libs/bem-core/common.blocks',
             'libs/bem-components/common.blocks',
             'libs/bem-components/desktop.blocks',
+            'libs/bem-social/common.blocks',
+            'libs/bem-social/design/common.blocks',
             'common.blocks',
             'accessibility.blocks',
             'promo.blocks',
