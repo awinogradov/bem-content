@@ -1,4 +1,5 @@
 # bem-content
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/verybigman/bem-content?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 This README also available in [russian](https://github.com/verybigman/bem-content/blob/master/README.ru.md).
 
