@@ -8,7 +8,7 @@ block('paragraph')(
                 elem : 'marker',
                 content : this.ctx.mark
             },
-            this.ctx.content
+            applyNext()
         ];
     }),
 
