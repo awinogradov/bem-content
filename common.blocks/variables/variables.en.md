@@ -8,10 +8,10 @@ Base typography settings.
 - __h_font_family__ - headings font family (default is __font_family__)
 - __h_font_weight__ - heading font weight
 
-- __h1_lines__ - first level heading scale from __font_size__
-- __h2_lines__ - ... level heading scale from __font_size__
-- __h3_lines__ - ... level heading scale from __font_size__
-- __h4_lines__ - ... level heading scale from __font_size__
+- __h1_scale__ - first level heading scale from __font_size__
+- __h2_scale__ - ... level heading scale from __font_size__
+- __h3_scale__ - ... level heading scale from __font_size__
+- __h4_scale__ - ... level heading scale from __font_size__
 
 - __p_lead_scale__ - lead paragraph scale from __font_size__
 
