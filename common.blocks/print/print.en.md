@@ -15,5 +15,4 @@ Add block `print` as deps to block `page`.
         { block : 'print' }
     ]
 })
-
 ```
