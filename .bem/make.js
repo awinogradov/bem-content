@@ -35,7 +35,7 @@ MAKE.decl('SetsNode', {
 
     getSets : function() {
         return {
-            'library' : [
+            'common' : [
                 'common.blocks',
                 'accessibility.blocks',
                 'design/common.blocks',

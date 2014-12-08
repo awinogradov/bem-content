@@ -37,9 +37,10 @@
   "scripts": {
     "deps": "bower-npm-install",
     "build": "npm run deps",
-    "test-specs": "bem make specs",
+    "test-specs": "bem make common.specs",
+    "test-tmpls": "bem make common.tests",
     "specs": "npm run test-specs",
-    "unit": "npm run test-specs",
+    "tmpls": "npm run test-tmpls",
     "lint": "jshint-groups && jscs ."
   },
   "engines": {
