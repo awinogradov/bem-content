@@ -1,6 +1,6 @@
 ({
     mustDeps : [
-        { block : 'paragraph' }
+        { elems : ['content', 'footer'] }
     ],
     shouldDeps : [
 

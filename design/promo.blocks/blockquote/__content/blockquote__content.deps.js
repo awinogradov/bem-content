@@ -1,6 +1,6 @@
 ({
     mustDeps : [
-        { block : 'paragraph' }
+        { block : 'calc', elems : 'font' }
     ],
     shouldDeps : [
 
