@@ -5,6 +5,7 @@ YENV = 'development';
 // Technologies
 var techs = {
     levels          : require('enb/techs/levels'),
+    levelsToBemdecl : require('enb-bem-techs/techs/levels-to-bemdecl'),
     files           : require('enb/techs/files'),
     provider        : require('enb/techs/file-provider'),
     copy            : require('enb/techs/file-copy'),
@@ -59,14 +60,54 @@ function libLevels(config) {
 * @param {Object} config
 */
 module.exports = function(config) {
+    config.includeConfig('enb-bem-examples');
+    config.includeConfig('enb-bem-tmpl-specs');
 
-    // Common technologies for all bundles
-    config.nodes('*.pages/*', function(nodeConfig) {
+    var examples = config.module('enb-bem-examples').createConfigurator('tests');
+    var tmplsSpecs = config.module('enb-bem-tmpl-specs').createConfigurator('tmpl-specs');
+
+    examples.configure({
+        destPath : 'common.tests',
+        techSuffixes : ['tests'],
+        levels : ['common.blocks']
+    });
+
+    tmplsSpecs.configure({
+        referenceDirSuffixes : ['tmpl-specs'],
+        destPath : 'common.tmpl-specs',
+        levels : ['common.blocks'],
+        sourceLevels : [
+            { path : 'libs/bem-core/common.blocks', check : false },
+            { path : 'libs/bem-components/common.blocks', check : false },
+            { path : 'libs/bem-components/desktop.blocks', check : false }
+        ]
+        .concat([
+            'common.blocks',
+            'accessibility.blocks'
+        ])
+        .map(function(level) {
+            return config.resolvePath(level);
+        }),
+        engines : {
+            bh : {
+                tech : 'enb-bh/techs/bh-server'
+            },
+            'bemhtml-dev' : {
+                tech : 'enb-bemxjst/techs/bemhtml',
+                options : { devMode : true }
+            },
+            'bemhtml-prod' : {
+                tech : 'enb-bemxjst/techs/bemhtml',
+                options : { devMode : false }
+            }
+        }
+    });
+
+    // Common technologies
+    config.nodes(['*.pages/*', '*.tests/*/*'], function(nodeConfig) {
         nodeConfig.addTechs([
-            use('files'),
             use('deps', { target : '?.bemdecl.js' }),
             use('levels', { levels : libLevels(config) }),
-            use('provider', { target : '?.bemjson.js' }),
             use('bemdecl'),
             use('js', { target : '?.pre.js' }),
             use('modules', { target : '?.js', source : '?.pre.js' }),
@@ -83,7 +124,7 @@ module.exports = function(config) {
                 ],
                 sourceTarget : '?.noprefix.css'
             }),
-            use('bh', { devMode : false }),
+            use('bh'),
             use('bhHtml')
         ]);
 
@@ -92,9 +133,28 @@ module.exports = function(config) {
         ]);
     });
 
+    // Bundles technologies for all bundles
+    config.nodes(['*.pages/*'], function(nodeConfig) {
+        nodeConfig.addTechs([
+            use('files'),
+            use('provider', { target : '?.bemjson.js' })
+        ]);
+    });
+
+    // Tests technologies for all bundles
+    config.nodes(['*.tests/*/*'], function(nodeConfig) {
+        nodeConfig.addTechs([
+            use('files'),
+            use('copy', { sourceTarget : '?.css', destTarget : '_?.css' }),
+            use('copy', { sourceTarget : '?.ie.css', destTarget : '_?.ie.css' }),
+            use('borschik', { sourceTarget : '?.js', destTarget : '?.borschik.js', minify : false, freeze : true }),
+            use('copy', { sourceTarget : '?.borschik.js', destTarget : '_?.js' })
+        ]);
+    });
+
     // Development
     config.mode('development', function() {
-        config.nodes('*.pages/*', function(nodeConfig) {
+        config.nodes(['*.pages/*'], function(nodeConfig) {
             nodeConfig.addTechs([
                 use('copy', { sourceTarget : '?.css', destTarget : '_?.css' }),
                 use('copy', { sourceTarget : '?.ie.css', destTarget : '_?.ie.css' }),
@@ -104,20 +164,9 @@ module.exports = function(config) {
         });
     });
 
-    // Test
-    config.mode('testing', function() {
-        config.nodes('*.pages/*', function(nodeConfig) {
-            nodeConfig.addTechs([
-                use('borschik', { sourceTarget : '?.css', destTarget : '_?.css', minify : true, freeze : true }),
-                use('borschik', { sourceTarget : '?.ie.css', destTarget : '_?.ie.css', minify : true, freeze : true }),
-                use('borschik', { sourceTarget : '?.js', destTarget : '_?.js', minify : true, freeze : true })
-            ]);
-        });
-    });
-
     // Production
     config.mode('production', function() {
-        config.nodes('*.pages/*', function(nodeConfig) {
+        config.nodes(['*.pages/*'], function(nodeConfig) {
             nodeConfig.addTechs([
                 use('borschik', { sourceTarget : '?.css', destTarget : '_?.css', minify : true, freeze : true }),
                 use('borschik', { sourceTarget : '?.ie.css', destTarget : '_?.ie.css', minify : true, freeze : true }),
