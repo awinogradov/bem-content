@@ -9,6 +9,7 @@ env:
   matrix:
     - TEST_SCOPE: lint
     - TEST_SCOPE: specs
+    - TEST_SCOPE: tmpls
 
 matrix:
   fast_finish: true
