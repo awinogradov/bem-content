@@ -1,6 +1,6 @@
 ({
     mustDeps : [
-        { block : 'calc', elems : 'font' }
+        { elems : ['content', 'footer'] }
     ],
     shouldDeps : [
 
