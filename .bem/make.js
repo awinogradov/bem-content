@@ -80,8 +80,7 @@ MAKE.decl('BundleNode', {
             'design/common.blocks',
             'accessibility.blocks',
             'promo.blocks',
-            'design/promo.blocks',
-            'test.blocks'
+            'design/promo.blocks'
         ];
     },
 

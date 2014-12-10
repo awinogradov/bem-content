@@ -6,6 +6,7 @@ test/libs
 .DS_Store
 .project
 .bem/cache/
+.enb/tmp
 *.pages/*/*.*
 !*.pages/*/*.bemjson.js
 !*.pages/.bem/*
