@@ -11,6 +11,7 @@ test/libs
 !*.pages/*/*.bemjson.js
 !*.pages/.bem/*
 .libs-*/
+npm-debug.log
 
 /*.docs
 /*.examples
