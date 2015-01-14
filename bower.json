@@ -21,11 +21,10 @@
   ],
   "dependencies": {
     "bem-core": "v2.5.0",
-    "highlight": "~7.0.1",
-    "bem-social": "~0.2.0"
+    "bem-components": "7329bcb78aaee74ab3372d93a026205d7c0ae77e"
   },
   "devDependencies": {
-    "bem-components": "7329bcb78aaee74ab3372d93a026205d7c0ae77e",
+    "bem-social": "~0.2.0",
     "bem-pr": "git://github.com/narqo/bem-pr.git#~0.10.0"
   },
   "resolutions": {
