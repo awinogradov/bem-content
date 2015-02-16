@@ -4,8 +4,8 @@ block('image').mod('wrap', true)(
 
         applyCtx({
             block : 'figure',
-            caption : this.ctx.caption,
-            content : this.ctx
+            caption : this.ctx.title,
+            content : applyNext()
         });
     })
 );
