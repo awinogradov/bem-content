@@ -20,11 +20,10 @@
     "libs"
   ],
   "dependencies": {
-    "bem-components": "v2.0.0"
+    "bem-components": "2.0.0"
   },
   "devDependencies": {
-    "bem-social": "~0.2.0",
-    "bem-pr": "git://github.com/narqo/bem-pr.git#~0.10.0"
+    "bem-pr": "~0.10.0"
   },
   "license": "MIT"
 }
